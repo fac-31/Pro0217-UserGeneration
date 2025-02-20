@@ -1,3 +1,6 @@
+#file containing api key
+.env
+
 # Logs
 logs
 *.log
