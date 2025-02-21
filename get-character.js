@@ -1,7 +1,7 @@
 const devContent =
-	"return the key chracteristics of a character described by the user";
+	"You are a psychologist analysing the different attributes of a character that has been described to you by the user. Your job is to rate each attribute as a number between 1 and 10. 10 being that the character has a lot of this attribute, and 1 being that the character has very little of this attribute. The categories that you have to rate are: strength, dexterity, constitution, intelligence, wisdom, charisma, and empathy. Be harsh and critical with your scoring, only give top marks where it is deserved. Remember to return a number between 1 and 10. ";
 const userContent =
-	"build me a character that is 6ft tall with red hair. The character is called Harvey";
+	"I'm super adventurous and love climbing trees. I love days out in the woods and am always bringing my friends - i think it does them good to get out of the city!. My favorite color is green and if my friends were to describe me in one word it would be chatty";
 
 //Makes an openAI call that generates a character object
 async function getCharacter(client) {
@@ -26,17 +26,36 @@ async function getCharacter(client) {
 				schema: {
 					type: "object",
 					properties: {
-						character_name: {
-							description: "The name of the new character",
-							type: "string",
+						Strength: {
+							description: "A measure of the characters physical power",
+							type: "number",
 						},
-						hair_color: {
-							description: "the hair color of the new character",
-							type: "string",
+						Dexterity: {
+							description: "A measure of the characters agility and reflexes",
+							type: "number",
 						},
-						height: {
-							description: "The height of the character",
-							type: "string",
+						Constitution: {
+							description: "A measure of the characters health and stamina",
+							type: "number",
+						},
+						Intelligence: {
+							description:
+								"A measure of the characters intelligence and ability to reason",
+							type: "number",
+						},
+						Wisdom: {
+							description:
+								"A measure of the characters perceptiveness and insightful intuition",
+							type: "number",
+						},
+						Charisma: {
+							description:
+								"A measure of the characters ability to interact effectively with others - often persuasive",
+							type: "number",
+						},
+						Empathy: {
+							description: "A measure of the characters ability to empathise",
+							type: "number",
 						},
 					},
 					additionalProperties: false,
