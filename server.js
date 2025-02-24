@@ -14,12 +14,17 @@ const client = new OpenAI({
 	apiKey: process.env.OPEN_AI_KEY,
 });
 
-// Serve static files from the "public" directory
-app.use(express.static("public"));
-
 // Define a route for the home page
 app.get("/", (req, res) => {
-	res.sendFile(__dirname + "/index.html");
+	res.sendFile(__dirname + "/Front-end/public/index.html");
+});
+
+// Serve static files from the "public" directory
+app.use(express.static("Front-end/public"));
+
+// Route for create.html
+app.get("/create.html", (req, res) => {
+	res.sendFile(__dirname + "Front-end/public/create.html");
 });
 
 // Start the server
@@ -29,11 +34,10 @@ app.listen(PORT, () => {
 
 //Browser sync setup
 browserSync.init({
-		proxy: `http://localhost:${PORT}`,
-		files: ["public/*/.*"],
-		reloadDelay: 50,
+	proxy: `http://localhost:${PORT}`,
+	files: ["public/*/.*"],
+	reloadDelay: 50,
 });
-	
 
 //Calls function to create character object --> not sure where to store yet
 async function setCharacterValue() {
@@ -41,4 +45,3 @@ async function setCharacterValue() {
 	console.log(`test: ${characterObject}`);
 }
 setCharacterValue();
-

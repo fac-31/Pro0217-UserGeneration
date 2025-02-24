@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
 <body>
     
-<form>
+<form id="characterForm">
 
  <label for="name">Character Name</label>   
  <input type="text" name="name" id="name" placeholder="Default">
@@ -66,11 +66,9 @@
 
 <textarea name="biography" id="biography" placeholder="Enter a biography"></textarea>
 
-
-
-
-<button type="submit">Generate Character</button>
 </form>
+
+<button type ="button" onclick="window.location.href='/display.html'" id="submitButton">Create character</button>
 
 <script src="scripts.js"></script>
 
