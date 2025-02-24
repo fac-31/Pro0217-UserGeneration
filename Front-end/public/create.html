@@ -1,76 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Document</title>
-</head>
-<body>
-    
-<form id="characterForm">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="styles.css" />
+		<title>Create User</title>
+	</head>
+	<body>
+		<form id="characterForm">
+			<label for="name">Character Name</label>
+			<input type="text" name="name" id="name" placeholder="Default" />
 
- <label for="name">Character Name</label>   
- <input type="text" name="name" id="name" placeholder="Default">
+			<p>Appearance</p>
 
-<p>Appearance</p>
+			<fieldset>
+				<legend>Choose the colour of your hat</legend>
+				<input type="radio" id="hatRed" name="hat" value="hatRed" />
+				<label for="hatRed">Red</label>
+				<input type="radio" id="hatGreen" name="hat" value="hatGreen" />
+				<label for="hatGreen">Green</label>
+				<input type="radio" id="hatBlue" name="hat" value="hatBlue" />
+				<label for="hatBlue">Blue</label>
+			</fieldset>
 
- <fieldset>
-    <legend>Choose your hat</legend>
-    <input type="radio" id="hat1" name="hat" value="hat1">
-    <label for "hat2">hat1</label>
-    <input type="radio" id="hat2" name="hat" value="hat2">
-    <label for "hat2">hat2</label>
-    <input type="radio" id="hat3" name="hat" value="hat3">
-    <label for "hat3">hat3</label>
-    <input type="radio" id="hat4" name="hat" value="hat4">
-    <label for "hat4">hat4</label>
-</fieldset>
+			<fieldset>
+				<legend>Choose the colour of your outfit</legend>
+				<input type="radio" id="oufitRed" name="outfit" value="outfitRed" />
+				<label for="outfitRed">Red</label>
+				<input
+					type="radio"
+					id="outfitGreen"
+					name="outfit"
+					value="outfitGreen" />
+				<label for="outfitGreen">Green</label>
+				<input type="radio" id="outfitBlue" name="outfit" value="outfitBlue" />
+				<label for="outfitBlue">Blue</label>
+			</fieldset>
 
-<fieldset>
-    <legend>Choose your top</legend>
-    <input type="radio" id="hat1" name="top" value="hat1">
-    <label for "hat1">hat1</label>
-    <input type="radio" id="hat2" name="top" value="hat2">
-    <label for "hat2">hat2</label>
-    <input type="radio" id="hat3" name="top" value="hat3">
-    <label for "hat3">hat3</label>
-    <input type="radio" id="hat4" name="top" value="hat4">
-    <label for "hat4">hat4</label>
-</fieldset>
+			<fieldset>
+				<legend>Choose your boots</legend>
+				<input type="radio" id="bootsRed" name="boots" value="bootsRed" />
+				<label for="bootsRed">Red</label>
+				<input type="radio" id="bootsGreen" name="boots" value="bootsGreen" />
+				<label for="bootsGreen">Green</label>
+				<input type="radio" id="bootsBlue" name="boots" value="bootsBlue" />
+				<label for="bootsBlue">Blue</label>
+			</fieldset>
 
-<fieldset>
-    <legend>Choose your bottoms</legend>
-    <input type="radio" id="hat1" name="bottoms" value="hat1">
-    <label for "hat1">hat1</label>
-    <input type="radio" id="hat2" name="bottoms" value="hat2">
-    <label for "hat2">hat2</label>
-    <input type="radio" id="hat3" name="bottoms" value="hat3">
-    <label for "hat3">hat3</label>
-    <input type="radio" id="hat4" name="bottoms" value="hat4">
-    <label for "hat4">hat4</label>
-</fieldset>
+			<fieldset>
+				<legend>Choose the colour of your skin</legend>
+				<input type="radio" id="skinRed" name="skin" value="skinRed" />
+				<label for="skinRed">Red</label>
+				<input type="radio" id="skinGreen" name="skin" value="skinGreen" />
+				<label for="skinGreen">Green</label>
+				<input type="radio" id="skinBlue" name="skin" value="skinBlue" />
+				<label for="skinBlue">Blue</label>
+			</fieldset>
+			<br />
 
-<fieldset>
-    <legend>Choose your kicks</legend>
-    <input type="radio" id="hat1" name="kicks" value="hat1">
-    <label for "hat1">hat1</label>
-    <input type="radio" id="hat2" name="kicks" value="hat2">
-    <label for "hat2">hat2</label>
-    <input type="radio" id="hat3" name="kicks" value="hat3">
-    <label for "hat3">hat3</label>
-    <input type="radio" id="hat4" name="kicks" value="hat4">
-    <label for "hat4">hat4</label>
-</fieldset>
-<br>
+			<textarea
+				name="biography"
+				id="biography"
+				placeholder="Enter a biography"></textarea>
+		</form>
 
-<textarea name="biography" id="biography" placeholder="Enter a biography"></textarea>
+		<button
+			type="button"
+			onclick="window.location.href='/display.html'"
+			id="submitButton">
+			Create character
+		</button>
 
-</form>
-
-<button type ="button" onclick="window.location.href='/display.html'" id="submitButton">Create character</button>
-
-<script src="scripts.js"></script>
-
-</body>
+		<script src="scripts.js"></script>
+	</body>
 </html>
