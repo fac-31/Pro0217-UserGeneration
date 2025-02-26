@@ -1,0 +1,15 @@
+{
+	"name": "jaz",
+	"biography": "I'm wise",
+	"skin": "skinRed",
+	"hat": "hatRed",
+	"outfit": "outfitGreen",
+	"boots": "bootsGreen",
+	"Strength": 2,
+	"Dexterity": 2,
+	"Constitution": 2,
+	"Intelligence": 2,
+	"Wisdom": 8,
+	"Charisma": 2,
+	"Empathy": 2
+}
