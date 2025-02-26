@@ -32,8 +32,8 @@ app.use('/api', saveCharacterData);
 app.use(express.static("Front-end/public"));
 
 // Define a route for the home page
-app.get('/', (req, res) => {
-	res.sendFile(__dirname + '/Front-end/public/index.html');
+app.get("/", (req, res) => {
+	res.sendFile(__dirname + "/Front-end/public/index.html");
 });
 
 // Route for create.html
@@ -46,3 +46,17 @@ app.get("/create.html", (req, res) => {
 app.listen(PORT, () => {
 	console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+//Browser sync setup
+browserSync.init({
+	proxy: `http://localhost:${PORT}`,
+	files: ["public/*/.*"],
+	reloadDelay: 50,
+});
+
+//Calls function to create character object --> not sure where to store yet
+async function setCharacterValue() {
+	const characterObject = await getCharacter(client);
+	console.log(`test: ${characterObject}`);
+}
+setCharacterValue();
