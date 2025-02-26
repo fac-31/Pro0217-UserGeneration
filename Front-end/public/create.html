@@ -27,11 +27,7 @@
 				<legend>Choose the colour of your outfit</legend>
 				<input type="radio" id="oufitRed" name="outfit" value="outfitRed" />
 				<label for="outfitRed">Red</label>
-				<input
-					type="radio"
-					id="outfitGreen"
-					name="outfit"
-					value="outfitGreen" />
+				<input type="radio" id="outfitGreen" name="outfit" value="outfitGreen" />
 				<label for="outfitGreen">Green</label>
 				<input type="radio" id="outfitBlue" name="outfit" value="outfitBlue" />
 				<label for="outfitBlue">Blue</label>
@@ -58,18 +54,23 @@
 			</fieldset>
 			<br />
 
+<textarea name="biography" id="biography" placeholder="Enter a biography"></textarea>
+
 			<textarea
 				name="biography"
 				id="biography"
 				placeholder="Enter a biography"></textarea>
+
+
+<!-- NC button changed to submit and moved within form-->
+            <button
+                type="submit"
+                id="submitButton">
+                Create character
+            </button>
 		</form>
 
-		<button
-			type="button"
-			onclick="window.location.href='/display.html'"
-			id="submitButton">
-			Create character
-		</button>
+	
 
 		<script src="scripts.js"></script>
 	</body>
