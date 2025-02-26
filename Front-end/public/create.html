@@ -27,17 +27,15 @@
     <label for "hat4">hat4</label>
 </fieldset>
 
-<fieldset>
-    <legend>Choose your top</legend>
-    <input type="radio" id="hat1" name="top" value="hat1">
-    <label for "hat1">hat1</label>
-    <input type="radio" id="hat2" name="top" value="hat2">
-    <label for "hat2">hat2</label>
-    <input type="radio" id="hat3" name="top" value="hat3">
-    <label for "hat3">hat3</label>
-    <input type="radio" id="hat4" name="top" value="hat4">
-    <label for "hat4">hat4</label>
-</fieldset>
+			<fieldset>
+				<legend>Choose the colour of your outfit</legend>
+				<input type="radio" id="oufitRed" name="outfit" value="outfitRed" />
+				<label for="outfitRed">Red</label>
+				<input type="radio" id="outfitGreen" name="outfit" value="outfitGreen" />
+				<label for="outfitGreen">Green</label>
+				<input type="radio" id="outfitBlue" name="outfit" value="outfitBlue" />
+				<label for="outfitBlue">Blue</label>
+			</fieldset>
 
 <fieldset>
     <legend>Choose your bottoms</legend>
@@ -66,9 +64,21 @@
 
 <textarea name="biography" id="biography" placeholder="Enter a biography"></textarea>
 
-</form>
+			<textarea
+				name="biography"
+				id="biography"
+				placeholder="Enter a biography"></textarea>
 
-<button type ="button" onclick="window.location.href='/display.html'" id="submitButton">Create character</button>
+
+<!-- NC button changed to submit and moved within form-->
+            <button
+                type="submit"
+                id="submitButton">
+                Create character
+            </button>
+		</form>
+
+	
 
 <script src="scripts.js"></script>
 
