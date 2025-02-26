@@ -46,7 +46,7 @@ browserSync.init({
 
 //dummy data to render character --J
 app.get("/data", (req, res) => {
-	const data = { hat: "red", skin: "red", outfit: "red", boots: "green" };
+	const data = { hat: "red", skin: "orange", outfit: "green", boots: "purple" };
 	res.json(data);
 });
 
