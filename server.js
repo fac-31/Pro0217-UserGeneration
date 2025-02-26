@@ -3,9 +3,11 @@ require("dotenv").config();
 const browserSync = require("browser-sync").create();
 const express = require("express");
 const { OpenAI } = require("openai");
+const cors = require("cors");
 
 //internal imports
 const getCharacter = require("./get-character");
+//const BuildCharacter = require("./Front-end/public/buildCharacter");
 
 //variables
 const app = express();
@@ -21,6 +23,9 @@ app.get("/", (req, res) => {
 
 // Serve static files from the "public" directory
 app.use(express.static("Front-end/public"));
+
+app.use(cors()); //allows front end request -- trial --J
+app.use(express.json()); //Parses JSON request bodies --trial --J
 
 // Route for create.html
 app.get("/create.html", (req, res) => {
@@ -39,9 +44,15 @@ browserSync.init({
 	reloadDelay: 50,
 });
 
+//dummy data to render character --J
+app.get("/data", (req, res) => {
+	const data = { hat: "red", skin: "orange", outfit: "green", boots: "purple" };
+	res.json(data);
+});
+
 //Calls function to create character object --> not sure where to store yet
 async function setCharacterValue() {
 	const characterObject = await getCharacter(client);
-	console.log(`test: ${characterObject}`);
 }
+
 setCharacterValue();
