@@ -6,10 +6,15 @@ class BuildCharacter {
 	}
 
 	async fetchData(url) {
-		//fetches dummy character object from server
 		try {
-			const response = await fetch(url);
-			const data = await response.json().then(console.log("data recieved"));
+			const response = await fetch("http://localhost:3000/api/characters");
+
+			if (!response.ok) {
+				throw new Error("Failed to fetch character data");
+			}
+
+			const data = await response.json();
+			console.log("character data", data);
 			this.draw(data);
 		} catch (error) {
 			console.error(error);
@@ -34,7 +39,7 @@ class BuildCharacter {
 }
 
 let user = new BuildCharacter("characterCanvas");
-user.fetchData("http://localhost:3000/data"); //dummy route on server
+user.fetchData("http://localhost:3000/api/characters"); //dummy route on server
 
-let intruder = new BuildCharacter("intruderCanvas");
-intruder.fetchData("http://localhost:3000/data"); //dummy route on server
+//let intruder = new BuildCharacter("intruderCanvas");
+//intruder.fetchData("http://localhost:3000/data"); //dummy route on server

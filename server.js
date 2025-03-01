@@ -50,7 +50,7 @@ browserSync.init({
 	reloadDelay: 50,
 });
 
-//dummy data to render character --J
+//JM dummy data to render character
 app.get("/data", (req, res) => {
 	const data = { hat: "red", skin: "orange", outfit: "green", boots: "purple" };
 	res.json(data);

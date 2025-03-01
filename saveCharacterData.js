@@ -12,6 +12,41 @@ const client = new OpenAI({
 	apiKey: process.env.OPEN_AI_KEY,
 });
 
+//JM defining a path for get request
+router.get("/characters", (req, res) => {
+	//JM saving route to character folder in dataFolder variable
+	const dataFolder = path.join(__dirname, "Back-end", "characterData");
+
+	//JM checking for files in the folder --> parameters are options
+	fs.readdir(dataFolder, (err, files) => {
+		if (err) {
+			console.error("Error reading character folder:", err);
+			return res
+				.status(500)
+				.json({ message: "Error retrieving character folder" });
+		}
+
+		if (files.length === 0) {
+			return res.status(404).json({ message: "No characters found" });
+		}
+
+		//JM getting the latest character file --> needs ammending - not dynamic
+		const latestCharacter = path.join(dataFolder, "/jaz_character.json");
+
+		//JM reads as a text file - and responds with the character object
+		fs.readFile(latestCharacter, "utf8", (err, data) => {
+			//JM ensures the app doesn't crash if file is missing / not readable
+			if (err) {
+				console.error("Error reading character file:", err);
+				return res
+					.status(500)
+					.json({ message: "Error retrieving character file" });
+			}
+			res.json(JSON.parse(data));
+		});
+	});
+});
+
 router.post("/characters", async (req, res) => {
 	const characterData = req.body;
 	console.log("Ingredients received:", characterData);
