@@ -4,7 +4,7 @@ const userContent =
 	"I'm super adventurous and love climbing trees. I love days out in the woods and am always bringing my friends - i think it does them good to get out of the city!. My favorite color is green and if my friends were to describe me in one word it would be chatty";
 
 //Makes an openAI call that generates a character object
-async function getCharacter(client) {
+async function getCharacter(client, characterData) {
 	console.log("Calling getCharacter()");
 	try {
 		const completion = await client.chat.completions.create({
@@ -16,7 +16,7 @@ async function getCharacter(client) {
 				},
 				{
 					role: "user",
-					content: userContent,
+					content: JSON.stringify(characterData),
 				},
 			],
 			response_format: {
@@ -65,7 +65,6 @@ async function getCharacter(client) {
 			//stores the returned value so the response can be built on later
 			store: true,
 		});
-
 		return completion.choices[0].message.content;
 	} catch (error) {
 		console.error(error);
