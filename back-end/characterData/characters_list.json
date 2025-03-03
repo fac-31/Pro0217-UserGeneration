@@ -1,0 +1,27 @@
+{
+    {
+        "name": "Tortoise",
+        "biography": "The ultimate underdog. Despite having low stats, the Tortoise always wins.",
+        "skin": "red",
+        "hat": "red",
+        "outfit": "red",
+        "boots": "red",
+        "Strength": 1,
+        "Dexterity": 1,
+        "Constitution": 1,
+        "Intelligence": 1,
+        "Wisdom": 1,
+        "Charisma": 1,
+        "Empathy": 1,
+        "MusicalAbility": 3,
+        "MusicalAbility_thoughts": "There is no mention of musical interests or talents in Dorrin's description, so it is presumed to be low.",
+        "CookingAbility": 4,
+        "CookingAbility_thoughts": "While dwarves enjoy hearty meals, there's no specific mention of cooking ability, though a moderate level might be presumed from a general dwarven culture perspective.",
+        "CodingAbility": 1,
+        "CodingAbility_thoughts": "As there is no indication of any technological proficiency, a low score is assumed in this area.",
+        "Fashion": 2,
+        "Fashion_thoughts": "Given his described appearance with clashing colors, fashion sense does not appear to be a priority for Dorrin.",
+        "FishingAbility": 2,
+        "FishingAbility_thoughts": "There is no reference to fishing skills or interest, hence this ability is likely minimal for Dorrin."
+      }
+}
