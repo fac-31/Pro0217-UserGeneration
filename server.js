@@ -10,7 +10,7 @@ const getBackground = require("./generate-background");
 
 //internal imports
 //const getCharacter = require("./get-character");
-//const BuildCharacter = require("./Front-end/public/buildCharacter");
+//const BuildCharacter = require("./Front-end/public/buildCharacter-class");
 
 //variables - INITIALISE THE SECTION
 const app = express();
@@ -27,16 +27,16 @@ app.use(express.json());
 app.use("/api", saveCharacterData);
 
 // Serve static files from the "public" directory
-app.use(express.static("Front-end/public"));
+app.use(express.static("front-end/public"));
 
 // Define a route for the home page
 app.get("/", (req, res) => {
-	res.sendFile(__dirname + "/Front-end/public/index.html");
+	res.sendFile(__dirname + "/front-end/public/index.html");
 });
 
 // Route for create.html
 app.get("/create.html", (req, res) => {
-	res.sendFile(__dirname + "/Front-end/public/create.html");
+	res.sendFile(__dirname + "/front-end/public/create.html");
 });
 
 // Start the server
