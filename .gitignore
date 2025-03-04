@@ -1,3 +1,6 @@
+#archive character generation
+character_archive/
+
 #file containing api key
 .env
 
