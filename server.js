@@ -6,9 +6,10 @@ const cors = require("cors");
 
 //NC - Import the router
 const saveCharacterData = require("./saveCharacterData");
+const getBackground = require("./generate-background");
 
 //internal imports
-const getCharacter = require("./get-character");
+//const getCharacter = require("./get-character");
 //const BuildCharacter = require("./Front-end/public/buildCharacter");
 
 //variables - INITIALISE THE SECTION
@@ -43,15 +44,22 @@ app.listen(PORT, () => {
 	console.log(`Server is running on http://localhost:${PORT}`);
 });
 
+//JM route for lounge background image
+app.get("/background-image", async (req, res) => {
+	let background;
+
+	try {
+		background = await getBackground();
+	} catch (error) {
+		console.error("Failed to fetch image:", error);
+	}
+	console.log(background);
+	res.json({ url: background });
+});
+
 //Browser sync setup
 browserSync.init({
 	proxy: `http://localhost:${PORT}`,
 	files: ["public/*/.*"],
 	reloadDelay: 50,
-});
-
-//JM dummy data to render character
-app.get("/data", (req, res) => {
-	const data = { hat: "red", skin: "orange", outfit: "green", boots: "purple" };
-	res.json(data);
 });
