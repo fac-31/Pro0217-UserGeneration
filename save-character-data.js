@@ -62,8 +62,8 @@ router.post("/characters", async (req, res) => {
     }
     console.log("full character data:", fullCharacterData)
 
-    //NC - data JSON files save with the character name - this can be changed
-    const fileName = `${characterData.name.replace(/\s+/g, "_")}_character.json`
+    //NC - data JSON files save with the character userID - this can be changed
+    const fileName = `${(characterData.userId)}.json`;
 
     //NC - path to save JSON files in a folder
     const dataFolder = path.join(__dirname, "back-end", "characterData")

@@ -1,4 +1,4 @@
-//NC - openai call that creates a story of the battle
+/* //NC - openai call that creates a story of the battle
 
 async function generateBattleTale(client, winner, loser) {
     console.log("Writing the epic tale...");
@@ -6,7 +6,7 @@ async function generateBattleTale(client, winner, loser) {
     try {
         let prompt;
 
-        // If there's a winner, create the prompt for the battle story
+// If there's a winner, create the prompt for the battle story
         if (winner && loser) {
             prompt = `Imagine yourself as J.R.R. Tolkien or G.R.R. Martin. Create an epic hobby horse racing tale between ${winner.name} and ${loser.name}. This battle was based on their charisma. The story should be at least 100 words long.`;
         } else {
@@ -34,4 +34,4 @@ async function generateBattleTale(client, winner, loser) {
     }
 }
 
-module.exports = generateBattleTale
+module.exports = generateBattleTale */

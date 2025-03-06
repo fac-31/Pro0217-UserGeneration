@@ -1,4 +1,4 @@
-//NC - hobby horse race function
+/* //NC - hobby horse race function
 //NC - if the kitty litter launcher is detected a comparison between charisma is triggered
 
 const intruder = require("./selecting-intruder.js");
@@ -51,3 +51,4 @@ async function hobbyHorseRace() {
     }
 }   
 module.exports = hobbyHorseRace
+ */
