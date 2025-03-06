@@ -1,3 +1,5 @@
+//NC- make sure you dont fight yourself
+
 const fs = require("fs");
 const path = require("path");
 
@@ -14,12 +16,12 @@ async function randomCharacterSelector(filterCondition = () => true) {
             return null;
         }
 
-        // Select a random JSON file
+//NC- Select a random JSON file
         const randomIndex = Math.floor(Math.random() * jsonFiles.length);
-        const randomFileName = jsonFiles[randomIndex]; // Using jsonFiles instead of files
+        const randomFileName = jsonFiles[randomIndex];
         const filePath = path.join(folderPath, randomFileName);
 
-        // Read the file content and parse it as JSON
+//NC- Read the file content and parse it as JSON
         const data = JSON.parse(await fs.promises.readFile(filePath, "utf-8"));
 
         return {
