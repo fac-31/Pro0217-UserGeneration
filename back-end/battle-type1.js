@@ -1,54 +1,53 @@
-/* //NC - hobby horse race function
+//NC - hobby horse race function
 //NC - if the kitty litter launcher is detected a comparison between charisma is triggered
 
 const intruder = require("./selecting-intruder.js");
 const currentUser = require("./retrieve-user-saved-JSON.js");
 
-async function hobbyHorseRace() {
-    try {
-        const character1 = await currentUser(); 
-        const character2 = await intruder(); 
+async function battle(battleType) {
+	const battleType = battleType;
+	const character1 = await currentUser();
+	const character2 = await intruder();
 
-        let hobbyHorseWinner;
-        let hobbyHorseLoser;
+	let winner = character1;
+	let loser = character2;
 
-//Compare Charisma to determine the winner
-        if (character1.Charisma > character2.Charisma) {
-            hobbyHorseWinner = character1;
-            hobbyHorseLoser = character2;
+	try {
+		//Compare Charisma to determine the winner
+		if (character1.battleType === character2.battleType) {
+			drawlogic();
+		} else if (character1.battleType < character2.battleType) {
+			winner = character2;
+			loser = character1;
+		}
 
-        } else if (character2.Charisma > character1.Charisma) {
-            hobbyHorseWinner = character2;
-            hobbyHorseLoser = character1;
+		function drawlogic() {
+			if (character1.empathy < character2.empathy) {
+				winner = character2;
+				loser = character1;
+			}
+		}
 
-        } else {
-            hobbyHorseWinner = null;
-            hobbyHorseLoser = null;
-        }
+		if (winner) {
+			return {
+				message: "Winner!",
+				winner: {
+					name: winner.name,
+					battleType: winner.battleType,
+					empathy: winner.empathy,
+				},
+				loser: {
+					name: loser.name,
+					battleType: loser.battleType,
+					empathy: loser.battle,
+				},
+			};
+		}
+	} catch (error) {
+		console.error("Error getting a winner:", error);
+		return null;
+	}
+}
 
-        if (hobbyHorseWinner){
-            return {
-                message:"Winner!",
-                winner: {
-                    name: hobbyHorseWinner.name,
-                    charisma: hobbyHorseWinner.Charisma
-                },
-                loser: {
-                    name: hobbyHorseLoser.name,
-                    charisma: hobbyHorseLoser.Charisma
-                }
-            }
-            } else {
-                return {
-                    message: "draw!",
-                    winner: null,
-                    loser: null
-                };
-            }
-        } catch (error) {
-        console.error("Error getting a winner:", error);
-        return null; 
-    }
-}   
-module.exports = hobbyHorseRace
- */
+battle();
+module.exports = battle;
