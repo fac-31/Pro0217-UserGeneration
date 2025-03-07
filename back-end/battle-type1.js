@@ -1,16 +1,22 @@
 //NC - hobby horse race function
 //NC - if the kitty litter launcher is detected a comparison between charisma is triggered
 
-const intruder = require("./selecting-intruder.js");
-const currentUser = require("./retrieve-user-saved-JSON.js");
+//const intruder = require("./selecting-intruder.js");
+//const currentUser = require("./retrieve-user-saved-JSON.js");
+
+//JM dummy data
+const character1 = require("./characterData/3451.json");
+const character2 = require("./characterData/_character.json");
 
 async function battle(battleType) {
-	const battleType = battleType;
-	const character1 = await currentUser();
-	const character2 = await intruder();
-
+	//const character1 = await currentUser();
+	//const character2 = await intruder();
+	console.log("battle:", battleType);
 	let winner = character1;
 	let loser = character2;
+
+	console.log("before match winner", winner.name);
+	console.log("before match loser", loser.name);
 
 	try {
 		//Compare Charisma to determine the winner
@@ -29,6 +35,7 @@ async function battle(battleType) {
 		}
 
 		if (winner) {
+			console.log("Winner:", winner.name);
 			return {
 				message: "Winner!",
 				winner: {
@@ -48,6 +55,4 @@ async function battle(battleType) {
 		return null;
 	}
 }
-
-battle();
 module.exports = battle;

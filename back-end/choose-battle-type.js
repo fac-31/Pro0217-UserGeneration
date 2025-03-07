@@ -1,20 +1,20 @@
-import battle from "./battle-type1";
+const battle = require("./battle-type1");
+const data = require("./characterData/3451.json"); //JM dummy data --> will later be passed as props
 
-require("./battle-type1");
-
-export default function chooseBattleType(data) {
+function chooseBattleType() {
 	let battleType;
-
 	switch (data.selectedWeapon) {
 		case "KittyLitterLauncher":
-			battleType = charisma;
+			battleType = "Charisma";
 			break;
 		case "DogTreatCatapult":
-			battleType = wisdom;
+			battleType = "Wisdom";
 			break;
 		case "noisymegaphone":
-			battleType = empathy;
-			break;
+			battleType = "Empathy";
 	}
+	console.log("choose battle type:", battleType);
 	battle(battleType);
 }
+chooseBattleType();
+//module.exports = chooseBattleType;
