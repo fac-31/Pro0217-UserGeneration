@@ -11,42 +11,43 @@ const character2 = require("./characterData/_character.json");
 async function battle(battleType) {
 	//const character1 = await currentUser();
 	//const character2 = await intruder();
-	console.log("battle:", battleType);
-	let winner = character1;
-	let loser = character2;
-
-	console.log("before match winner", winner.name);
-	console.log("before match loser", loser.name);
 
 	try {
 		//Compare Charisma to determine the winner
-		if (character1.battleType === character2.battleType) {
+		if (character1.name === "Tortoise") {
+			setWinner(character1, character2);
+		} else if (character1.name === "Hare") {
+			setWinner(character2, character1);
+		} else if (character1[battleType] === character2[battleType]) {
 			drawlogic();
-		} else if (character1.battleType < character2.battleType) {
-			winner = character2;
-			loser = character1;
+		} else if (character1[battleType] < character2[battleType]) {
+			setWinner(character2, character1);
+		} else if (character1[battleType] > character2[battleType]) {
+			setWinner(character1, character2);
 		}
+		//JM notes --> logic works if tortoise and hare cannot be selcted as the intruder
+		//JM above code feels a bit noodly. Might be nice to rework later!
 
 		function drawlogic() {
-			if (character1.empathy < character2.empathy) {
-				winner = character2;
-				loser = character1;
+			if (character1[empathy] < character2[empathy]) {
+				setWinner(character2, character1);
+			} else {
+				setWinner(character1, character2);
 			}
 		}
 
-		if (winner) {
-			console.log("Winner:", winner.name);
+		function setWinner(winner, loser) {
 			return {
 				message: "Winner!",
 				winner: {
 					name: winner.name,
-					battleType: winner.battleType,
-					empathy: winner.empathy,
+					battleType: winner[battleType],
+					empathy: winner.Empathy,
 				},
 				loser: {
 					name: loser.name,
-					battleType: loser.battleType,
-					empathy: loser.battle,
+					battleType: loser[battleType],
+					empathy: loser.Empathy,
 				},
 			};
 		}
