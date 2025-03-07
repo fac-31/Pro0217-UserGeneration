@@ -17,6 +17,7 @@ const getCharacterFilePath = (userId) => {
 
 //NC - random character selector
 const randomCharacterSelector = require("./Back-end/selecting-intruder"); 
+const generateBattleTale = require("./Back-end/generate-battle-tale");
 
 
 //internal imports
@@ -50,7 +51,7 @@ app.get("/create.html", (req, res) => {
 	res.sendFile(__dirname + "/front-end/public/create.html");
 });
 
-// Route for saving weapon 
+//NC - Route for saving weapon 
 app.post("/api/save-weapon/:userId", async (req, res) => {
     const { userId } = req.params; 
     const { weapon } = req.body;   
@@ -73,7 +74,7 @@ app.post("/api/save-weapon/:userId", async (req, res) => {
     }
 });
 
-// Route to start battle and select an intruder
+//NC - Route to start battle and select an intruder
 app.get("/api/start-battle/:userId", async (req, res) => {
     const { userId } = req.params;
 
@@ -96,6 +97,23 @@ app.get("/api/start-battle/:userId", async (req, res) => {
         console.error("Error starting battle:", error);
         res.status(500).json({ message: "Error starting the battle." });
     }
+});
+
+//NC - Route to send generated tale to front end
+
+app.post("/generate-tale", async (req,res) => {
+
+	const {winner, loser, useFakeOpenAi} = req.body;
+
+	try {
+		const tale = await generateBattleTale(null, winner, loser, useFakeOpenAi);
+
+		res.json({tale});
+
+	} catch (error) {
+		console.error("error generating tale:" ,error);
+		res.status(500).json({error: "internal server error"});
+	}
 });
 
 // Start the server

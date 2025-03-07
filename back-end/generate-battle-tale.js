@@ -1,4 +1,6 @@
-/* //NC - openai call that creates a story of the battle
+//NC - openai call that creates a story of the battle
+
+const fakeOpenAiCall = require ("./fake-openai");
 
 async function generateBattleTale(client, winner, loser) {
     console.log("Writing the epic tale...");
@@ -15,10 +17,13 @@ async function generateBattleTale(client, winner, loser) {
         }
 
         // Send the prompt to OpenAI API for completion
-        const completion = await client.chat.completions.create({
+        const completion = useFakeOpenAi
+
+        ? await fakeOpenAiCall(prompt)
+        : await client.chat.completions.create({
             model: "gpt-4o-2024-08-06", 
             messages: [
-                {
+                { 
                     role: "user",
                     content: prompt
                 },
@@ -32,6 +37,9 @@ async function generateBattleTale(client, winner, loser) {
         console.error("Error creating the battle story:", error);
         return null;
     }
-}
 
-module.exports = generateBattleTale */
+}
+    
+console.log("the tale is written")
+
+module.exports = generateBattleTale
