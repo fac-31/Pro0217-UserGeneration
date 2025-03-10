@@ -1,10 +1,11 @@
 import fetchData from "./get-data.js";
 import BuildCharacter from "./buildCharacter.js";
-import fetchBackground from "./set-background.js";
+import displayImage from "./set-background.js";
 
 async function callFunctions() {
 	await fetchData().then((res) => {
-		fetchBackground();
+		console.log(res);
+		displayImage(res.url);
 		let user = new BuildCharacter("characterCanvas", res);
 		user.draw();
 	});

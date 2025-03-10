@@ -6,6 +6,7 @@ const express = require("express");
 const router = express.Router();
 const { OpenAI } = require("openai");
 const getCharacter = require("./get-character");
+const getBackground = require("./generate-background");
 
 //JM configs OpenAI
 const client = new OpenAI({
@@ -31,7 +32,7 @@ router.get("/characters", (req, res) => {
 		}
 
 		//JM getting the latest character file --> needs ammending - not dynamic
-		const latestCharacter = path.join(dataFolder, "/jaz_character.json");
+		const latestCharacter = path.join(dataFolder, "/_character.json");
 
 		//JM reads as a text file - and responds with the character object
 		fs.readFile(latestCharacter, "utf8", (err, data) => {
@@ -60,16 +61,23 @@ router.post("/characters", async (req, res) => {
 			...characterData,
 			...JSON.parse(characterStatData),
 		};
-		console.log("full character data:", fullCharacterData);
+		//console.log("full character data:", fullCharacterData);
+		const backgroundData = await getBackground(fullCharacterData);
 
-		//NC - data JSON files save with the character userID - this can be changed
-		const fileName = `${characterData.userId}.json`;
+		fullCharacterData["url"] = backgroundData;
+
+		//NC - data JSON files save with the character name - this can be changed
+		const fileName = `${characterData.name.replace(
+			/\s+/g,
+			"_"
+		)}_character.json`;
 
 		//NC - path to save JSON files in a folder
 		const dataFolder = path.join(__dirname, "back-end", "characterData");
 
 		//NC - Define the full path to the file - required as part using the file save
 		const filePath = path.join(dataFolder, fileName);
+		//console.log(fullCharacterData);
 
 		//NC - Write the character data extracted from the form to a file in JSON format
 		fs.writeFile(
