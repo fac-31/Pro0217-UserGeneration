@@ -5,7 +5,7 @@ const express = require("express");
 const cors = require("cors");
 
 //NC - Import the router
-const saveCharacterData = require("./saveCharacterData");
+const saveCharacterData = require("./save-character-data");
 const getBackground = require("./generate-background");
 
 //internal imports
@@ -45,17 +45,16 @@ app.listen(PORT, () => {
 });
 
 //JM route for lounge background image
-app.get("/background-image", async (req, res) => {
-	let background;
+// app.get("/background-image", async (req, res) => {
+// 	let background;
 
-	try {
-		background = await getBackground();
-	} catch (error) {
-		console.error("Failed to fetch image:", error);
-	}
-	console.log(background);
-	res.json({ url: background });
-});
+// 	try {
+// 		background = await getBackground();
+// 	} catch (error) {
+// 		console.error("Failed to fetch image:", error);
+// 	}
+// 	res.json({ url: background });
+// });
 
 //Browser sync setup
 browserSync.init({

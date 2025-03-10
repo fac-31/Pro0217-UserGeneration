@@ -1,4 +1,4 @@
-export default async function fetchBackground() {
+async function fetchBackground() {
 	console.log("about to fetch background");
 	let url;
 	try {
@@ -17,7 +17,7 @@ export default async function fetchBackground() {
 	displayImage(url.url);
 }
 
-function displayImage(image) {
+export default function displayImage(url) {
 	const body = document.querySelector("body");
-	body.style.backgroundImage = `url(${image})`;
+	body.style.backgroundImage = `url(${url})`;
 }
