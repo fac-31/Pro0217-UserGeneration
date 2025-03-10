@@ -3,9 +3,9 @@
 document.getElementById("weaponButton").addEventListener("click", async () => {
     const selectedWeapon = document.querySelector('input[name="weapons"]:checked').value;
     const userId = new URLSearchParams(window.location.search).get("userId"); 
-
-    console.log("Selected Weapon:", selectedWeapon);
+    
     console.log("User ID:", userId);
+    console.log("Selected Weapon:", selectedWeapon);
 
     if (!userId) {
         console.error("User ID is required");
@@ -28,7 +28,7 @@ document.getElementById("weaponButton").addEventListener("click", async () => {
         console.log(data.message); 
 
         alert("Weapon selected!");
-        
+
     } catch (error) {
         console.error("Error:", error);
     }

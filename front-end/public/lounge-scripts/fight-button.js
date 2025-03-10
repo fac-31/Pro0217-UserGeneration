@@ -21,3 +21,4 @@ document.getElementById("fightButton").addEventListener("click", async () => {
         console.error("Error starting battle:", error);
     }
 });
+
