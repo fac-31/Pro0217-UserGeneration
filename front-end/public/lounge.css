@@ -1,15 +1,20 @@
-body {
-}
-
 .character-canvas {
-	border: solid 2px black;
-	height: 700px;
-	width: 350px;
+  border: solid 2px black;
+  height: 700px;
+  width: 350px;
 }
 
 .intruder-canvas {
-	border: solid 2px black;
-	height: 700px;
-	width: 350px;
-	transform: translateX(100px);
+  border: solid 2px black;
+  height: 700px;
+  width: 350px;
+  transform: translateX(100px);
+}
+
+#intruder {
+  display: none;
+}
+
+#battleTale {
+  display: none;
 }

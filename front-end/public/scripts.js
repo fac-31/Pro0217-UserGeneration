@@ -3,6 +3,11 @@ document
   .addEventListener("submit", function (event) {
     event.preventDefault()
 
+
+    //NC- generate a random 4 digit number to use as UserID - to help with making sure the weapon selection is saved. Placeholder that can be changed
+    const userId = Math.floor(Math.random() * 9000) + 1000;
+
+
     //NC - extract values from form
     const name = document.getElementById("name").value
     const biography = document.getElementById("biography").value
@@ -14,7 +19,7 @@ document
     const boots = document.querySelector('input[name="boots"]:checked').value
 
     //NC - extracted information turned into Javascript object
-    const characterData = { name, biography, skin, hat, outfit, boots }
+    const characterData = { userId, name, biography, skin, hat, outfit, boots }
 
     //NC - convert javascript object into JSON and send to backend
     fetch("http://localhost:3000/api/characters", {
@@ -26,8 +31,8 @@ document
       .then((response) => response.json())
       .then((data) => {
         console.log("backend response:", data)
-        alert("Cooking up your tortoise!")
-        window.location.href = "/display.html"
+        alert("Success!")
+        window.location.href = `/display.html?userId=${userId}` //NC- userId is passed into the url
       })
 
       //NC - .catch error handling, alert message prompting user to re-enter and check info
