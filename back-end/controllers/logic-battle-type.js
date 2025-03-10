@@ -1,5 +1,5 @@
-const battle = require("./battle-type1");
-const data = require("./characterData/3451.json"); //JM dummy data --> will later be passed as props
+const battle = require("./logic-winner");
+const data = require("../characterData/3451.json"); //JM dummy data --> will later be passed as props
 
 //NC- async added 
 async function chooseBattleType() {

@@ -5,8 +5,8 @@
 //const currentUser = require("./retrieve-user-saved-JSON.js");
 
 //JM dummy data
-const character1 = require("./characterData/3451.json");
-const character2 = require("./characterData/_character.json");
+const character1 = require("../characterData/3451.json");
+const character2 = require("../characterData/_character.json");
 
 async function battle(battleType) {
 	//const character1 = await currentUser();
@@ -25,6 +25,7 @@ async function battle(battleType) {
 		} else if (character1[battleType] > character2[battleType]) {
 			setWinner(character1, character2);
 		}
+		
 		//JM notes --> logic works if tortoise and hare cannot be selcted as the intruder
 		//JM above code feels a bit noodly. Might be nice to rework later!
 

@@ -6,9 +6,6 @@ const cors = require("cors");
 const path = require("path");
 const fs = require("fs").promises;
 
-//NC - Import the router
-const saveCharacterData = require("./save-character-data");
-const getBackground = require("./generate-background");
 
 //NC - saving weapon data - Define the function to get the character's file path before use
 const getCharacterFilePath = (userId) => {
@@ -16,8 +13,8 @@ const getCharacterFilePath = (userId) => {
 };
 
 //NC - random character selector
-const randomCharacterSelector = require("./Back-end/selecting-intruder"); 
-const generateBattleTale = require("./Back-end/generate-battle-tale");
+const randomCharacterSelector = require("./Back-end/controllers/logic-intruder-selection"); 
+const generateBattleTale = require("./Back-end/openAi-calls/generate-battle-tale");
 
 
 //internal imports
@@ -35,9 +32,6 @@ app.use(cors());
 //NC - use express to parse JSON data
 app.use(express.json());
 
-//NC - Use the imported router for character routes
-app.use("/api", saveCharacterData);
-
 // Serve static files from the "public" directory
 app.use(express.static("front-end/public"));
 
@@ -51,28 +45,6 @@ app.get("/create.html", (req, res) => {
 	res.sendFile(__dirname + "/front-end/public/create.html");
 });
 
-//NC - Route for saving weapon 
-app.post("/api/save-weapon/:userId", async (req, res) => {
-    const { userId } = req.params; 
-    const { weapon } = req.body;   
-
-    try {
-       
-        const filePath = getCharacterFilePath(userId);
-
-        let characterData = await fs.readFile(filePath, "utf8");
-        characterData = JSON.parse(characterData);
-
-        characterData.selectedWeapon = weapon;
-
-        await fs.writeFile(filePath, JSON.stringify(characterData, null, 2));
-        res.json({ message: "Weapon saved to JSON", selectedWeapon: weapon });
-    } catch (error) {
-
-        console.error("Error saving weapon:", error);
-        res.status(500).json({ message: "Error saving weapon choice" });
-    }
-});
 
 //NC - Route to start battle and select an intruder
 app.get("/api/start-battle/:userId", async (req, res) => {

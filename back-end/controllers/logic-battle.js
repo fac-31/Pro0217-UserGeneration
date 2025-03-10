@@ -4,10 +4,10 @@
 // NC - runs the battle function which generates a winner and looser 
 // NC - passes object with winner loser to the generate battle tale - this calls OpenAI to create a story
 
-const duelCharacters = require("./selecting-intruder");
-const chooseBattleType = require("./choose-battle-type");
-const battle = require("./battle-type1");
-const generateBattleTale = require("./generate-battle-tale");
+const duelCharacters = require("./logic-intruder-selection");
+const chooseBattleType = require("./logic-battle-type");
+const battle = require("./logic-winner");
+const generateBattleTale = require("../openAi-calls/generate-battle-tale");
 
 
 async function runBattleAndGenerateStory() {
