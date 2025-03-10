@@ -1,6 +1,6 @@
-import fetchData from "./get-data.js";
-import BuildCharacter from "./buildCharacter.js";
-import displayImage from "./set-background.js";
+import fetchData from "./lounge-fetch-character.js";
+import BuildCharacter from "./lounge-display-character.js";
+import displayImage from "./lounge-fetch-background.js";
 
 async function callFunctions() {
 	await fetchData().then((res) => {
