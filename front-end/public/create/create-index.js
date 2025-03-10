@@ -21,7 +21,7 @@ document
 
 		//NC - convert javascript object into JSON and send to backend
 		fetch("http://localhost:3000/characters", {
-			method: "GET",
+			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(characterData),
 		})
