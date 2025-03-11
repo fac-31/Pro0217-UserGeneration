@@ -1,6 +1,8 @@
 const fs = require("fs");
 const path = require("path");
 const { OpenAI } = require("openai");
+const getCharacter = require("../openAi-calls/generate-character");
+const getBackground = require("../openAi-calls/generate-background");
 
 //JM configs OpenAI
 const client = new OpenAI({
@@ -9,7 +11,13 @@ const client = new OpenAI({
 
 // Save-character-data-get
 exports.sendCharacter = (req, res) => {
-	const dataFolder = path.join(__dirname, "back-end", "characterData");
+	const dataFolder = path.join(
+		__dirname,
+		"..",
+		"..",
+		"back-end",
+		"characterData"
+	);
 
 	//JM checking for files in the folder --> parameters are options
 	fs.readdir(dataFolder, (err, files) => {
@@ -67,7 +75,13 @@ exports.saveCharacter = async (req, res) => {
 		)}_character.json`;
 
 		//NC - path to save JSON files in a folder
-		const dataFolder = path.join(__dirname, "back-end", "characterData");
+		const dataFolder = path.join(
+			__dirname,
+			"..",
+			"..",
+			"back-end",
+			"characterData"
+		);
 
 		//NC - Define the full path to the file - required as part using the file save
 		const filePath = path.join(dataFolder, fileName);

@@ -15,8 +15,14 @@ const getCharacterFilePath = (userId) => {
 const app = express();
 const PORT = process.env.PORT || 3000;
 const router = require("./back-end/routes/routes");
+//const {
+//	saveCharacter,
+//} = require("./back-end/controllers/controllers-characters");
+const saveCharacter = require("./back-end/controllers/controllers-characters");
 
 //NC - Middleware and routes section
+
+//app.use("/api", saveCharacter);
 
 app.use(cors());
 
@@ -36,7 +42,8 @@ app.get("/create.html", (req, res) => {
 	res.sendFile(__dirname + "/front-end/public/create/create.html");
 });
 
-app.use("/characters", router);
+// Route for character and weapon data
+app.use(router);
 
 // Start the server
 app.listen(PORT, () => {
