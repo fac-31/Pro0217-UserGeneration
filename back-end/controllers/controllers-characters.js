@@ -3,7 +3,6 @@ const path = require("path");
 const { OpenAI } = require("openai");
 const getCharacter = require("../openAi-calls/generate-character");
 const getBackground = require("../openAi-calls/generate-background");
-const characterArray = require("../characterData/characterArray.json");
 
 //JM configs OpenAI
 const client = new OpenAI({
@@ -60,32 +59,13 @@ exports.sendCharacter = (req, res) => {
 //save-character-data-post
 exports.saveCharacter = async (req, res) => {
 	const characterData = req.body;
-	//console.log("Ingredients received:", characterData);
 
 	try {
 		const fullCharacterData = await makeDataNice(characterData);
-		// //JM storing OpenAI response (character personailty stats)
-		// const characterStatData = await getCharacter(client, characterData);
-		// const userId = Math.floor(Math.random() * 9000) + 1000;
 
-		// //JM creating new variable with both character data objects (physical + personality)
-		// const fullCharacterData = {
-		// 	...characterData,
-		// 	...JSON.parse(characterStatData),
-		// 	userId,
-		// };
-		//console.log("full character data:", fullCharacterData);
 		const backgroundData = await getBackground(fullCharacterData);
 		fullCharacterData["url"] = backgroundData;
-		characterArray.push(fullCharacterData);
 
-		// //NC - data JSON files save with the character id
-		// console.log(characterData.userId);
-		// const fileName = `${characterData.userId}.json`;
-		// idArray.push(characterData.userId);
-		// console.log("idArray:", idArray);
-
-		//NC - path to save JSON files in a folder
 		const dataFolder = path.join(
 			__dirname,
 			"..",
@@ -94,44 +74,9 @@ exports.saveCharacter = async (req, res) => {
 			"characterData"
 		);
 
-		//NC - Define the full path to the file - required as part using the file save
-		//const filePath = path.join(dataFolder, fileName);
 		const file = path.join(dataFolder, "characterArray.json");
-		//console.log(fullCharacterData);
-		writeFile(file, characterArray);
-		//JM data test
-		//const immortalCharacters = [
-		//	{ name: "Hare", userId: "0000" },
-		//	{ name: "Tortois", userId: "0001" },
-		//	{ name: "Average Jo", userId: "0002" },
-		//];
-		// console.log("character array:", characterArray);
-		// characterArray.push(fullCharacterData);
+		writeFile(file, fullCharacterData);
 
-		// fs.writeFile(file, JSON.stringify(characterArray), (err) => {
-		// 	if (err) {
-		// 		console.log("Error writing character array", err);
-		// 	}
-		// });
-		//NC - Write the character data extracted from the form to a file in JSON format
-		// fs.writeFile(
-		// 	filePath,
-		// 	JSON.stringify(fullCharacterData, null, 2),
-		// 	(err) => {
-		// 		if (err) {
-		// 			console.error("Problems moving your ingredients", err);
-		// 			return res
-		// 				.status(500)
-		// 				.json({ message: "Problems moving your ingredients" });
-		// 		}
-
-		// 		//NC - file save success message
-		// 		res.json({
-		// 			message: "Ingredients in the fridge",
-		// 			data: fullCharacterData,
-		// 		});
-		// 	}
-		// );
 		console.log("bug");
 		res.json({
 			message: "Ingredients in the fridge",
@@ -156,10 +101,17 @@ async function makeDataNice(characterData) {
 	return fullCharacterData;
 }
 
-function writeFile(file, characterArray) {
-	fs.writeFile(file, JSON.stringify(characterArray), (err) => {
+function writeFile(file, fullCharacterData) {
+	fs.readFile(file, (err, data) => {
 		if (err) {
 			console.log("Error writing character array", err);
+			return;
 		}
+
+		const characterArray = JSON.parse(data);
+
+		characterArray.push(fullCharacterData);
+
+		fs.writeFile(file, JSON.stringify(characterArray, null, 2));
 	});
 }
