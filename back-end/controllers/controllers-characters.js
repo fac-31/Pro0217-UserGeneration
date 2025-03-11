@@ -59,6 +59,14 @@ exports.sendCharacter = (req, res) => {
 //save-character-data-post
 exports.saveCharacter = async (req, res) => {
 	const characterData = req.body;
+	const file = path.join(
+		__dirname,
+		"..",
+		"..",
+		"back-end",
+		"characterData",
+		"characterArray.json"
+	);
 
 	try {
 		const fullCharacterData = await makeDataNice(characterData);
@@ -66,18 +74,8 @@ exports.saveCharacter = async (req, res) => {
 		const backgroundData = await getBackground(fullCharacterData);
 		fullCharacterData["url"] = backgroundData;
 
-		const dataFolder = path.join(
-			__dirname,
-			"..",
-			"..",
-			"back-end",
-			"characterData"
-		);
+		writeCharacterFile(file, fullCharacterData);
 
-		const file = path.join(dataFolder, "characterArray.json");
-		writeFile(file, fullCharacterData);
-
-		console.log("bug");
 		res.json({
 			message: "Ingredients in the fridge",
 		});
@@ -101,7 +99,7 @@ async function makeDataNice(characterData) {
 	return fullCharacterData;
 }
 
-function writeFile(file, fullCharacterData) {
+function writeCharacterFile(file, fullCharacterData) {
 	fs.readFile(file, (err, data) => {
 		if (err) {
 			console.log("Error writing character array", err);
@@ -112,6 +110,6 @@ function writeFile(file, fullCharacterData) {
 
 		characterArray.push(fullCharacterData);
 
-		fs.writeFile(file, JSON.stringify(characterArray, null, 2));
+		fs.writeFileSync(file, JSON.stringify(characterArray, null, 2));
 	});
 }
