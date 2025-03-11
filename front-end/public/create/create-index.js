@@ -30,12 +30,12 @@ document
 			.then((data) => {
 				console.log("backend response:", data);
 				alert("Success!");
-				window.location.href = `/lounge/lounge.html?userId=${userId}`; //NC- userId is passed into the url
-			});
+				window.location.href = `/lounge/lounge.html`; //NC- userId is passed into the url
+			})
 
-		//NC - .catch error handling, alert message prompting user to re-enter and check info
-		// .catch((error) => {
-		// 	console.error("Error sending data to backend:", error);
-		// 	alert("api call failed");
-		// });
+			//NC - .catch error handling, alert message prompting user to re-enter and check info
+			.catch((error) => {
+				console.error("Error sending data to backend:", error);
+				alert("api call failed");
+			});
 	});

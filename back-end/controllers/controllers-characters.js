@@ -33,11 +33,13 @@ exports.sendCharacter = (req, res) => {
 			});
 		}
 		//getting the latest character data and latest ID
+		const dataSet = JSON.parse(data);
+		const latestCharacter = dataSet[dataSet.length - 1];
 		const latestId = userIdArray[userIdArray.length - 1];
-		const latestCharacter = JSON.parse(data)[data.length - 1];
+		console.log(latestCharacter);
 
 		//checks for matching userId to verify correct character
-		if (latestId === latestCharacter.userId) {
+		if (latestId == latestCharacter.userId) {
 			res.json(latestCharacter);
 		} else {
 			console.log("At sendCharacter: Character id doesn't match");
