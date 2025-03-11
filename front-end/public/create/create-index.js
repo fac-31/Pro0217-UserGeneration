@@ -4,7 +4,7 @@ document
 		event.preventDefault();
 
 		//NC- generate a random 4 digit number to use as UserID - to help with making sure the weapon selection is saved. Placeholder that can be changed
-		const userId = Math.floor(Math.random() * 9000) + 1000;
+		//const userId = Math.floor(Math.random() * 9000) + 1000;
 
 		//NC - extract values from form
 		const name = document.getElementById("name").value;
@@ -17,7 +17,7 @@ document
 		const boots = document.querySelector('input[name="boots"]:checked').value;
 
 		//NC - extracted information turned into Javascript object
-		const characterData = { userId, name, biography, skin, hat, outfit, boots };
+		const characterData = { name, biography, skin, hat, outfit, boots };
 
 		//NC - convert javascript object into JSON and send to backend
 		fetch("http://localhost:3000/characters", {

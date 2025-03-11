@@ -1,0 +1,11 @@
+{
+	"Tortoise": {
+		"userId": 1111,
+		"name": "Tortoise",
+		"biography": "The ultimate underdog. Despite having low stats, the Tortoise always wins.",
+		"skin": "green",
+		"hat": "green",
+		"outfit": "green",
+		"boots": "green"
+	}
+}
