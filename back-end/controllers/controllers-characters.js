@@ -1,6 +1,8 @@
 const fs = require("fs");
 const path = require("path");
 const { OpenAI } = require("openai");
+const getCharacter = require("../openAi-calls/generate-character");
+const getBackground = require("../openAi-calls/generate-background");
 
 //JM configs OpenAI
 const client = new OpenAI({
@@ -9,44 +11,47 @@ const client = new OpenAI({
 
 // Save-character-data-get
 exports.sendCharacter = (req, res) => {
+	const dataFolder = path.join(
+		__dirname,
+		"..",
+		"..",
+		"back-end",
+		"characterData"
+	);
 
-    const dataFolder = path.join(__dirname, "back-end", "characterData");
+	//JM checking for files in the folder --> parameters are options
+	fs.readdir(dataFolder, (err, files) => {
+		if (err) {
+			console.error("Error reading character folder:", err);
+			return res
+				.status(500)
+				.json({ message: "Error retrieving character folder" });
+		}
 
-//JM checking for files in the folder --> parameters are options
-fs.readdir(dataFolder, (err, files) => {
-    if (err) {
-        console.error("Error reading character folder:", err);
-        return res
-            .status(500)
-            .json({ message: "Error retrieving character folder" });
-    }
+		if (files.length === 0) {
+			return res.status(404).json({ message: "No characters found" });
+		}
 
-    if (files.length === 0) {
-        return res.status(404).json({ message: "No characters found" });
-    }
+		//JM getting the latest character file --> needs ammending - not dynamic
+		const latestCharacter = path.join(dataFolder, "/_character.json");
 
-    //JM getting the latest character file --> needs ammending - not dynamic
-    const latestCharacter = path.join(dataFolder, "/_character.json");
-
-    //JM reads as a text file - and responds with the character object
-    fs.readFile(latestCharacter, "utf8", (err, data) => {
-        //JM ensures the app doesn't crash if file is missing / not readable
-        if (err) {
-            console.error("Error reading character file:", err);
-            return res
-                .status(500)
-                .json({ message: "Error retrieving character file" });
-        }
-        res.json(JSON.parse(data));
-    });
-});
-
-}
+		//JM reads as a text file - and responds with the character object
+		fs.readFile(latestCharacter, "utf8", (err, data) => {
+			//JM ensures the app doesn't crash if file is missing / not readable
+			if (err) {
+				console.error("Error reading character file:", err);
+				return res
+					.status(500)
+					.json({ message: "Error retrieving character file" });
+			}
+			res.json(JSON.parse(data));
+		});
+	});
+};
 
 //save-character-data-post
 exports.saveCharacter = async (req, res) => {
-
-    const characterData = req.body;
+	const characterData = req.body;
 	console.log("Ingredients received:", characterData);
 
 	try {
@@ -70,7 +75,13 @@ exports.saveCharacter = async (req, res) => {
 		)}_character.json`;
 
 		//NC - path to save JSON files in a folder
-		const dataFolder = path.join(__dirname, "back-end", "characterData");
+		const dataFolder = path.join(
+			__dirname,
+			"..",
+			"..",
+			"back-end",
+			"characterData"
+		);
 
 		//NC - Define the full path to the file - required as part using the file save
 		const filePath = path.join(dataFolder, fileName);
@@ -98,4 +109,4 @@ exports.saveCharacter = async (req, res) => {
 	} catch (error) {
 		console.error("error saving character data:", error);
 	}
-}
+};

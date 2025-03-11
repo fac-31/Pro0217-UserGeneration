@@ -1,0 +1,63 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./lounge.css" />
+		<title>CharacterName Living Room</title>
+	</head>
+	<body>
+		<p>USERS LOUNGE</p>
+		<canvas id="characterCanvas" class="character-canvas"></canvas>
+		<canvas id="intruderCanvas" class="intruder-canvas"></canvas>
+
+		<div id="battleTale">
+			<p></p>
+		</div>
+
+		<button type="button" name="intruder" id="intruder-button">
+			What's that shadow behind the sofa...
+		</button>
+
+		<fieldset id="intruder">
+			<legend>Defend Yourself!</legend>
+			<input
+				type="radio"
+				id="KittyLitterLauncher"
+				name="weapons"
+				value="KittyLitterLauncher"
+				checked />
+			<label for="KittyLitterLauncher">Kitty Litter Launcher</label>
+
+			<input
+				type="radio"
+				id="DogTreatCatapult"
+				name="weapons"
+				value="DogTreatCatapult"
+				checked />
+			<label for="DogTreatCatapult">Dog Treat Catapault</label>
+
+			<input
+				type="radio"
+				id="noisymegaphone"
+				name="weapons"
+				value="noisymegaphone"
+				checked />
+			<label for="noisymegaphone">Noisy Megaphone</label>
+
+			<button type="submit" id="weaponButton">Pick Weapon!</button>#
+
+			<button type="submit" id="fightButton">fight!</button>
+		</fieldset>
+
+		<script type="module" src="./lounge-scripts/lounge-index.js"></script>
+		<script
+			type="module"
+			src="./lounge-scripts/lounge-weapon-update.js"></script>
+		<script
+			type="module"
+			src="lounge-scripts/lounge-display-update-choice.js"></script>
+		<script
+			type="module"
+			src="lounge-scripts/lounge-fetch-battle-tale.js"></script>
+	</body>
+</html>
