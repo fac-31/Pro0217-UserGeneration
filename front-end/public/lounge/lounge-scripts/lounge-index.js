@@ -13,5 +13,3 @@ async function callFunctions() {
 
 callFunctions();
 
-//let intruder = new BuildCharacter("intruderCanvas");
-//intruder.fetchData("http://localhost:3000/data"); //dummy route on server

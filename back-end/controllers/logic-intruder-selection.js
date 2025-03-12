@@ -1,38 +1,37 @@
-//NC- make sure you dont fight yourself
+//NC - logic to select intruder
 
 const fs = require("fs");
 const path = require("path");
 
-const folderPath = "./Back-end/characterData";
+const folderPath = () => {
+  return path.join(__dirname, '..', '..', 'back-end', 'characterData', 'characterArray.json');
+};
 
-async function randomCharacterSelector(filterCondition = () => true) {
-	try {
-		const files = await fs.promises.readdir(folderPath);
-		const jsonFiles = files.filter((file) => file.endsWith(".json"));
+async function randomCharacterSelector() {
+  try {
+    console.log("start selecting intruder");
+    // Read and parse the character array JSON file
+    const filePath = folderPath();
+    const data = JSON.parse(await fs.promises.readFile(filePath, "utf-8"));
 
-		// If no JSON files are found
-		if (jsonFiles.length === 0) {
-			console.log("No characters found.");
-			return null;
-		}
+    // Filter characters with ids in the range of 1500 to 9000
+    const filteredCharacters = data.filter(character => character.userId >= 1500 && character.userId <= 9000);
 
-		//NC- Select a random JSON file
-		const randomIndex = Math.floor(Math.random() * jsonFiles.length);
-		const randomFileName = jsonFiles[randomIndex];
-		const filePath = path.join(folderPath, randomFileName);
+    // Randomly select a character from the filtered list
+    const randomIndex = Math.floor(Math.random() * filteredCharacters.length);
+    const selectedCharacter = filteredCharacters[randomIndex];
 
-		//NC- Read the file content and parse it as JSON
-		const data = JSON.parse(await fs.promises.readFile(filePath, "utf-8"));
+	console.log("Selected Intruder:", selectedCharacter.userId);
+  console.log("Selected Intruder Name:", selectedCharacter.name);
 
-		return {
-			message: "Intruder selected!",
-			fileName: randomFileName,
-			data: data,
-		};
-	} catch (error) {
-		console.error("Error selecting random character:", error);
-		return null;
-	}
+    return {
+      message: "Intruder selected!",
+      selectedCharacter: selectedCharacter,
+    };
+  } catch (error) {
+    console.error("Error selecting random character:", error);
+    return null;
+  }
 }
 
 module.exports = randomCharacterSelector;
