@@ -4,109 +4,104 @@ const { OpenAI } = require("openai");
 const getCharacter = require("../openAi-calls/generate-character");
 const getBackground = require("../openAi-calls/generate-background");
 
-//JM configs OpenAI
+//configs openAI
 const client = new OpenAI({
 	apiKey: process.env.OPEN_AI_KEY,
 });
 
-// Save-character-data-get
-exports.sendCharacter = (req, res) => {
-	const dataFolder = path.join(
-		__dirname,
-		"..",
-		"..",
-		"back-end",
-		"characterData"
-	);
+//stores all created userId --> to become a set
+const userIdArray = [];
 
-	//JM checking for files in the folder --> parameters are options
-	fs.readdir(dataFolder, (err, files) => {
+//file path to characterArray.json
+const file = path.join(
+	__dirname,
+	"..",
+	"..",
+	"back-end",
+	"characterData",
+	"characterArray.json"
+);
+
+//GET controller
+exports.sendCharacter = (req, res) => {
+	//reading characterArray.json
+	fs.readFile(file, (err, data) => {
 		if (err) {
-			console.error("Error reading character folder:", err);
+			console.log("At sendCharacter: Error reading characterArray file:", err);
+			return res.status(500).json({
+				message: "At sendCharacter: Error retrieving characterArray file",
+			});
+		}
+		//getting the latest character data and latest ID
+		const dataSet = JSON.parse(data);
+		const latestCharacter = dataSet[dataSet.length - 1];
+		const latestId = userIdArray[userIdArray.length - 1];
+		console.log(latestCharacter);
+
+		//checks for matching userId to verify correct character
+		if (latestId == latestCharacter.userId) {
+			res.json(latestCharacter);
+		} else {
+			console.log("At sendCharacter: Character id doesn't match");
 			return res
 				.status(500)
-				.json({ message: "Error retrieving character folder" });
+				.json({ message: "At sendCharacter: Character id doesn't match" });
 		}
-
-		if (files.length === 0) {
-			return res.status(404).json({ message: "No characters found" });
-		}
-
-		//JM getting the latest character file --> needs ammending - not dynamic
-		const latestCharacter = path.join(dataFolder, "/_character.json");
-
-		//JM reads as a text file - and responds with the character object
-		fs.readFile(latestCharacter, "utf8", (err, data) => {
-			//JM ensures the app doesn't crash if file is missing / not readable
-			if (err) {
-				console.error("Error reading character file:", err);
-				return res
-					.status(500)
-					.json({ message: "Error retrieving character file" });
-			}
-			res.json(JSON.parse(data));
-		});
 	});
 };
 
-//save-character-data-post
+//POST controller
 exports.saveCharacter = async (req, res) => {
+	//data from input form
 	const characterData = req.body;
-	console.log("Ingredients received:", characterData);
 
 	try {
-		//JM storing OpenAI response (character personailty stats)
-		const characterStatData = await getCharacter(client, characterData);
+		//Calling functions to gather data and write json
+		const fullCharacterData = await makeDataNice(characterData);
+		writeCharacterFile(file, fullCharacterData);
 
-		//JM creating new variable with both character data objects (physical + personality)
-		const fullCharacterData = {
-			...characterData,
-			...JSON.parse(characterStatData),
-		};
-		//console.log("full character data:", fullCharacterData);
-		const backgroundData = await getBackground(fullCharacterData);
-
-		fullCharacterData["url"] = backgroundData;
-
-		//NC - data JSON files save with the character name - this can be changed
-		const fileName = `${characterData.name.replace(
-			/\s+/g,
-			"_"
-		)}_character.json`;
-
-		//NC - path to save JSON files in a folder
-		const dataFolder = path.join(
-			__dirname,
-			"..",
-			"..",
-			"back-end",
-			"characterData"
-		);
-
-		//NC - Define the full path to the file - required as part using the file save
-		const filePath = path.join(dataFolder, fileName);
-		//console.log(fullCharacterData);
-
-		//NC - Write the character data extracted from the form to a file in JSON format
-		fs.writeFile(
-			filePath,
-			JSON.stringify(fullCharacterData, null, 2),
-			(err) => {
-				if (err) {
-					console.error("Problems moving your ingredients", err);
-					return res
-						.status(500)
-						.json({ message: "Problems moving your ingredients" });
-				}
-
-				//NC - file save success message
-				res.json({
-					message: "Ingredients in the fridge",
-					data: fullCharacterData,
-				});
-			}
-		);
+		res.json({
+			message: "At saveCharacter: Ingredients in the fridge",
+		});
 	} catch (error) {
-		console.error("error saving character data:", error);
+		console.error("At saveCharacter: Error saving character data:", error);
 	}
 };
+
+async function makeDataNice(characterData) {
+	//storing OpenAI response (character personailty stats)
+	const characterStatData = await getCharacter(client, characterData);
+
+	//Creates userId and apends to userIdArray
+	const userId = Math.floor(Math.random() * 9000) + 1000;
+	userIdArray.push(userId);
+
+	//creates full character object (form data + openAI response + userId)
+	const fullCharacterData = {
+		...characterData,
+		...JSON.parse(characterStatData),
+		userId,
+	};
+
+	//Gets background image and sets url value in character object
+	const backgroundData = await getBackground(fullCharacterData);
+	fullCharacterData["url"] = backgroundData;
+
+	return fullCharacterData;
+}
+
+function writeCharacterFile(file, fullCharacterData) {
+	fs.readFile(file, (err, data) => {
+		if (err) {
+			console.log("Error writing character array", err);
+			return;
+		}
+
+		//apending latest character data to json character data
+		const characterArray = JSON.parse(data);
+		characterArray.push(fullCharacterData);
+
+		//writng file with all new data
+		fs.writeFileSync(file, JSON.stringify(characterArray, null, 2));
+	});
+}

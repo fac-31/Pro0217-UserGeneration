@@ -1,10 +1,10 @@
 //external imports
 require("dotenv").config();
-const browserSync = require("browser-sync").create();
+//const browserSync = require("browser-sync").create();
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
-const fs = require("fs").promises;
+//const fs = require("fs").promises;
 
 //NC - saving weapon data - Define the function to get the character's file path before use
 const getCharacterFilePath = (userId) => {
@@ -18,7 +18,7 @@ const router = require("./back-end/routes/routes");
 //const {
 //	saveCharacter,
 //} = require("./back-end/controllers/controllers-characters");
-const saveCharacter = require("./back-end/controllers/controllers-characters");
+//const saveCharacter = require("./back-end/controllers/controllers-characters");
 
 //NC - Middleware and routes section
 
@@ -51,8 +51,8 @@ app.listen(PORT, () => {
 });
 
 //Browser sync setup
-browserSync.init({
-	proxy: `http://localhost:${PORT}`,
-	files: ["front-end/public/*/.*"],
-	reloadDelay: 50,
-});
+// browserSync.init({
+// 	proxy: `http://localhost:${PORT}`,
+// 	files: ["front-end/public/*/.*"],
+// 	reloadDelay: 50,
+// });

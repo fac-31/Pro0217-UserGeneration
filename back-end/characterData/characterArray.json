@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Hare",
+    "userId": "1001"
+  },
+  {
+    "name": "Tortois",
+    "userId": "1002"
+  },
+  {
+    "name": "Average Jo",
+    "userId": "1003"
+  },
+  {
+    "name": "",
+    "biography": "a goose",
+    "skin": "red",
+    "hat": "red",
+    "outfit": "red",
+    "boots": "red",
+    "Strength": 4,
+    "Str_thoughts": "A goose typically has moderate strength for its size, though it is not particularly known for its strength.",
+    "Dexterity": 8,
+    "Dex_thoughts": "Geese are agile and have good reflexes, essential for flight and navigating through water, hence a higher score.",
+    "Constitution": 6,
+    "Con_thoughts": "Geese have good stamina and can travel long distances during migration, although their overall health resilience is less than endurance experts.",
+    "Intelligence": 3,
+    "Int_thoughts": "While geese can display some problem-solving skills, they are not known for high intelligence compared to humans.",
+    "Wisdom": 5,
+    "Wis_thoughts": "Geese have a certain instinctual wisdom, particularly concerning migration patterns and avoiding predators.",
+    "Charisma": 2,
+    "Cha_thoughts": "Geese can be perceived as aggressive and are not generally charming or persuasive, known more for their honking.",
+    "Empathy": 2,
+    "Emp_thoughts": "Geese tend to be territorial and aggressive, indicating a lower level of empathy.",
+    "MusicalAbility": 1,
+    "MusicalAbility_thoughts": "Geese have no musical ability, their honking does not align with conventional musicality.",
+    "CookingAbility": 1,
+    "CookingAbility_thoughts": "Being a non-human animal, a goose has no ability to cook.",
+    "CodingAbility": 1,
+    "CodingAbility_thoughts": "A goose lacks the capability to understand or engage in coding.",
+    "Fashion": 5,
+    "Fashion_thoughts": "The uniform red outfit, hat, and boots suggest some sense of style, albeit not complex.",
+    "FishingAbility": 2,
+    "FishingAbility_thoughts": "While geese may catch some food from water, they are not specialized fishers.",
+    "lighting": "natural and bright lighting",
+    "lighting_thoughts": "Geese are accustomed to outdoor environments, so natural lighting would make the living room feel familiar.",
+    "color": "red",
+    "color_thoughts": "The character's red skin, hat, outfit, and boots indicate a preference for this color, suggesting the room should match.",
+    "coffeeTable": "a small, round, red table",
+    "coffeeTable_thoughts": "A red table would fit the character's apparent color preference, compact to fit a goose's environment.",
+    "wallArt": "abstract red patterns on canvas",
+    "wallArt_thoughts": "Abstract, bold patterns in red will resonate with the character's color theme and simple appreciation.",
+    "floor": "red carpet with a soft texture",
+    "floor_thoughts": "A red carpet aligns with the theme, providing comfort akin to grassy fields they may frequent.",
+    "userId": 6417,
+    "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-nYbqgo3O0LNnYYAoKAmApBfx/user-nWoSrXrDPHnWVploEeO1G4R9/img-ZFwMoyyH4qhZyz2kfJrBrsVo.png?st=2025-03-11T22%3A08%3A41Z&se=2025-03-12T00%3A08%3A41Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-10T23%3A30%3A09Z&ske=2025-03-11T23%3A30%3A09Z&sks=b&skv=2024-08-04&sig=JnKLN5zBwChRk6m0m5e8petAm/6e7DTxXIbayivNhIQ%3D"
+  }
+]
