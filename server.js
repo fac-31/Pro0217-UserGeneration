@@ -42,6 +42,11 @@ app.get("/create.html", (req, res) => {
 	res.sendFile(__dirname + "/front-end/public/create/create.html");
 });
 
+//JM test route
+app.get("/create-jaz.html", (req, res) => {
+	res.sendFile(__dirname + "/front-end/public/create/create-jaz.html");
+});
+
 // Route for character and weapon data
 app.use(router);
 

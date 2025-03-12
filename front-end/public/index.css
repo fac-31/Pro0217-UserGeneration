@@ -1,0 +1,56 @@
+:root {
+	--primary-color: rgb(34, 31, 31);
+	--primary-fade: rgb(51, 46, 46);
+}
+
+body {
+	margin: 0;
+	background-color: var(--primary-color);
+	height: 100vh;
+}
+
+.container {
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.content-container {
+	flex-grow: 1;
+	min-width: 100%;
+}
+
+.story-container {
+	margin: 0;
+	background-color: rgb(22, 21, 21);
+	flex-shrink: 0;
+	padding: 20px 20px 50px 20px;
+}
+
+.tortoise-text {
+	color: white;
+}
+
+.button-container {
+	display: flex;
+	justify-content: space-around;
+}
+
+button {
+	color: white;
+	background-color: transparent;
+	transition: background-color 200ms ease-in-out;
+	border: transparent 2px solid;
+
+	margin: 10px;
+	padding: 5px;
+}
+
+button:hover {
+	border-bottom: white 2px solid;
+}
+
+.hidden {
+	display: none;
+}
