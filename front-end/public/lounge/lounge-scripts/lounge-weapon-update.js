@@ -1,36 +1,47 @@
-//NC- front end code to pass selected weapon to back end
-
-document.getElementById("weaponButton").addEventListener("click", async () => {
-    const selectedWeapon = document.querySelector('input[name="weapons"]:checked').value;
-    const userId = new URLSearchParams(window.location.search).get("userId"); 
-    
-    console.log("User ID:", userId);
-    console.log("Selected Weapon:", selectedWeapon);
-
-    if (!userId) {
-        console.error("User ID is required");
-        return;
-    }
-
+document.getElementById('weaponButton').addEventListener('click', async () => {
     try {
+        // NC - weapon choice is extracted and sent to the backend
+        const selectedWeapon = document.querySelector('input[name="weapons"]:checked').value;
 
-//NC - fetch request to back end - POST request to server which sends weapon choice on form to be saved in the back end. 
-        const response = await fetch(`/api/save-weapon/${userId}`, {
-            method: "POST",
+        // NC - Send the weapon to the backend
+        console.log("save weapon triggered");
+        const response = await fetch('/save-weapon', {
+            method: 'POST',
             headers: {
-                "Content-Type": "application/json",
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({ weapon: selectedWeapon }),
         });
 
-        const data = await response.json();
+        // Check if the response was successful
+        if (!response.ok) {
+            throw new Error("Failed to save the weapon");
+        }
 
-        console.log(data.message); 
+        const data = await response.json(); // Get the response body as JSON
 
-        alert("Weapon selected!");
+        // Log to console that the weapon was successfully saved
+        console.log(`Weapon "${selectedWeapon}" has been successfully saved!`);
+
+        // Trigger the battle logic right after the weapon has been saved
+        console.log("battle triggered");
+        const battleResponse = await fetch('/start-battle', {
+            method: 'GET',
+        });
+
+        // Check if the battle response is successful
+        if (!battleResponse.ok) {
+            throw new Error("Battle logic failed.");
+        }
+
+        const battleData = await battleResponse.json();
+        const { winner, loser } = battleData;
+
+        // NC - Display the battle result
+        document.getElementById('result').textContent = `Weapon saved! - Battle Result: Winner is ${winner.name}, Loser is ${loser.name}`;
 
     } catch (error) {
         console.error("Error:", error);
+        document.getElementById('result').textContent = "There was an error selecting the weapon or starting the battle. Please try again.";
     }
 });
-

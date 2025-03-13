@@ -4,38 +4,43 @@
 // NC - runs the battle function which generates a winner and looser 
 // NC - passes object with winner loser to the generate battle tale - this calls OpenAI to create a story
 
-const duelCharacters = require("./logic-intruder-selection");
-const chooseBattleType = require("./logic-battle-type");
-const battle = require("./logic-winner");
+const chooseBattleType = require("../controllers/logic-battle-type");
+const battle = require("../controllers/logic-winner.js");
 const generateBattleTale = require("../openAi-calls/generate-battle-tale");
+const getCurrentUser = require("../controllers/logic-current-user");
 
 
-async function runBattleAndGenerateStory() {
+exports.runBattleAndGenerateStory = async (req, res) => {
+
     try {
-//NC - Select random fighter first 
-        const duelCharacters = await randomCharacterSelector();
-        if (!duelCharacters) {
-            throw new Error("Failed to select intruder.");
-        }
-//NC - 
-        const battleType = await chooseBattleType(fighters.character1, fighters.character2);
-        
-//NC - Run the battle and get results
-        const battleResult = await battle(battleType, fighters.character1, fighters.character2);
+ //NC - Get the current user and their weapon selection from characterArray.json
+        const { currentUser } = await getCurrentUser();
+
+        console.log(`Saved weapon has been extracted: ${currentUser.weapon}`);
+
+//NC - choose the battle type based on extracted user weapon
+        const battleType = await chooseBattleType(currentUser.weapon);  
+        console.log("Battle is a comparison of:", battleType);
+
+//NC - run battle logic to select winner
+        const battleResult = await battle(battleType); 
+        console.log("Battle Result:", battleResult);
+
         if (!battleResult) {
             throw new Error("Battle failed.");
         }
-
+//NC - generate story with openAI call based on the result
         const { winner, loser } = battleResult;
         console.log("Battle result:", winner.name, "vs", loser.name);
 
-        // Generate the battle story (No need to pass client)
+        console.log("generate story succesful");
         const battleStory = await generateBattleTale(winner, loser, battleType);
-        console.log("Generated Battle Story:", battleStory);
+
+//NC - Story sent to front end
+        res.json({ battleStory });
+
     } catch (error) {
         console.error("Error generating story:", error);
+        res.status(500).json({ message: "Error generating battle story." });
     }
 }
-
-// Run the entire battle and story generation process
-runBattleAndGenerateStory();

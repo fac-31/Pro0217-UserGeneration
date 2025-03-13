@@ -1,25 +1,22 @@
-//NC - openai call that creates a story of the battle
-
-//Initialise 
 const { OpenAI } = require("openai");
-
-const client = new OpenAI({
-	apiKey: process.env.OPEN_AI_KEY,
-});
+const chooseBattleType = require("../controllers/logic-battle-type");
+const client = new OpenAI({ apiKey: process.env.OPEN_AI_KEY });
 
 async function generateBattleTale(winner, loser) {
     console.log("Writing the epic tale...");
 
     try {
         let prompt;
+        const battleType = await chooseBattleType();
+        
+        if (winner && loser && battleType) {
+            prompt = `"Imagine you are J.R.R. Tolkien or G.R.R. Martin, but writing a humorous children's story. Create an epic yet funny battle between ${winner.name} and ${loser.name}, focusing on their ${battleType}. The setting of this battle is a living room, with a sofa, dining table, and various pictures on the wall. ${winner.name} uses their weapon, the ${winner.weapon}, to battle ${loser.name}, who wields a ${loser.weapon}. There should always be a winner in the battle. If no weapons are described, create whimsical weapons. The battle should be full of amusing slapstick accidents, include appearances from both characters pets, and be no more than 75 words long. If winner.name or loser.name are not provided, provide a name. If winner.weapon or loser.weapon are empty, create a weapon for the character. Keep the language grammatically correct, clear, and refined."`;
+        } else {
+            throw new Error("Winner, loser, or battle type is missing.");
+        }
 
-// If there's a winner, create the prompt for the battle story
-        if (winner && loser) {
-            prompt = `Imagine yourself as J.R.R. Tolkien or G.R.R. Martin. Create an epic hobby horse racing tale between ${winner.name} and ${loser.name}. This battle was based on their ${battleType}. The story should be at least 100 words long.`;
-        } 
-
-//NC - Send the prompt to OpenAI API for completion
-            const battleTale = await client.chat.completions.create({
+//NC - Call OpenAI API to generate the battle tale
+        const battleTale = await client.chat.completions.create({
             model: "gpt-4o-2024-08-06", 
             messages: [
                 { 
@@ -28,19 +25,17 @@ async function generateBattleTale(winner, loser) {
                 },
             ],
         });
+        
+//NC- Extract the story from the response
+        const story = battleTale.choices[0].message.content;
+        console.log("Output from generate-battle-tale fucntion:", story);
 
-        console.log("OpenAi tale:", JSON.stringify(battleTale, null, 2));
-
-//NC - Return the story from the response
-        return battleTale.choices[0].message.content;
+        return story;
 
     } catch (error) {
         console.error("Error creating the battle story:", error);
         return null;
     }
-
 }
-    
-console.log("the tale is written")
 
-module.exports = generateBattleTale
+module.exports = generateBattleTale;

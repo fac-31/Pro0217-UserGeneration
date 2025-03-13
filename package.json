@@ -26,7 +26,7 @@
 		"dotenv": "^16.4.7",
 		"env": "^0.0.2",
 		"express": "^4.21.2",
-		"openai": "^4.86.2",
-		"typewriter-effect": "^2.21.0"
+		"morgan": "^1.10.0",
+		"openai": "^4.86.2"
 	}
 }

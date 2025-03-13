@@ -55,6 +55,11 @@ app.listen(PORT, () => {
 	console.log(`Server is running on http://localhost:${PORT}`);
 });
 
+//NC- installed to help with showing all logs
+const morgan = require("morgan");
+app.use(morgan("dev"));
+
+
 //Browser sync setup
 // browserSync.init({
 // 	proxy: `http://localhost:${PORT}`,
