@@ -12,7 +12,7 @@ import {
 const characterData = {};
 
 const mainContent = document.getElementById("mainContent");
-mainContent.style.backgroundImage = "url(./tortoise-livingroom.png)";
+mainContent.style.backgroundImage = "url(../index/tortoise-livingroom.png)";
 
 typeIntro(introContent);
 
@@ -96,7 +96,7 @@ function listenforSave() {
 		if (e.key === "Enter") {
 			characterData.biography = element.value;
 			console.log("time to send data!", characterData);
-			//saveCharacter();
+			saveCharacter();
 		}
 	});
 }
@@ -113,7 +113,7 @@ function saveCharacter() {
 		.then((data) => {
 			console.log("backend response:", data);
 			alert("Success!");
-			window.location.href = `/lounge/lounge.html`; //NC- userId is passed into the url
+			window.location.href = `/lounge/lounge-tale.html`; //NC- userId is passed into the url
 		})
 
 		//NC - .catch error handling, alert message prompting user to re-enter and check info

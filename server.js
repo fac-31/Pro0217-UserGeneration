@@ -43,8 +43,8 @@ app.get("/create.html", (req, res) => {
 });
 
 //JM test route
-app.get("/create-jaz.html", (req, res) => {
-	res.sendFile(__dirname + "/front-end/public/create/create-jaz.html");
+app.get("/lounge-tale.html", (req, res) => {
+	res.sendFile(__dirname + "/front-end/public/lounge/lounge-tale.html");
 });
 
 // Route for character and weapon data
@@ -58,7 +58,6 @@ app.listen(PORT, () => {
 //NC- installed to help with showing all logs
 const morgan = require("morgan");
 app.use(morgan("dev"));
-
 
 //Browser sync setup
 // browserSync.init({
