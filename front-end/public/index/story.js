@@ -1,7 +1,8 @@
 export default class Story {
-	constructor(htmlElement, choiceElement, string, delay, pause) {
+	constructor(htmlElement, choiceElement, string, delay, pause, textId) {
 		this.htmlElement = htmlElement;
 		this.choiceElement = choiceElement;
+		this.textId = textId;
 		this.string = string;
 		this.delay = delay;
 		this.pause = pause;
@@ -21,6 +22,10 @@ export default class Story {
 		this.timeout = this.calculateTime();
 		setTimeout(() => {
 			this.choiceElement.classList.remove("hidden");
+			if (this.textId) {
+				const element = document.getElementById(this.textId);
+				element.focus();
+			}
 		}, this.timeout);
 	}
 

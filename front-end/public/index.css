@@ -16,16 +16,23 @@ body {
 	justify-content: center;
 }
 
-.content-container {
+.main-content {
 	flex-grow: 1;
 	min-width: 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.footer {
+	background-color: rgb(22, 21, 21);
+	padding-bottom: 30px;
 }
 
 .story-container {
-	margin: 0;
-	background-color: rgb(22, 21, 21);
-	flex-shrink: 0;
-	padding: 20px 20px 50px 20px;
+	max-width: 1000px;
+	min-height: 100px;
+	margin: 0 auto;
+	padding: 20px;
 }
 
 .tortoise-text {
@@ -35,6 +42,19 @@ body {
 .button-container {
 	display: flex;
 	justify-content: space-around;
+}
+
+.input-text {
+	background-color: transparent;
+	color: white;
+	width: 100%;
+	height: 100%;
+	border: transparent;
+	resize: none;
+}
+
+.input-text:focus {
+	outline: transparent;
 }
 
 button {

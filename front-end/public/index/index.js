@@ -10,8 +10,9 @@ import {
 } from "./content.js";
 
 const characterData = {};
-characterData.name = "test";
-characterData.biography = "test";
+
+const mainContent = document.getElementById("mainContent");
+mainContent.style.backgroundImage = "url(./tortoise-livingroom.png)";
 
 typeIntro(introContent);
 
@@ -27,12 +28,12 @@ introContent.events.forEach(({ id, event }) => {
 
 function listenforHat() {
 	const element = document.getElementById(nameContent.id);
-	const input = document.getElementById(nameContent.inputId);
 	element.addEventListener(nameContent.events, (e) => {
-		e.preventDefault();
-		characterData.name = input.value;
-		typeIntro(hatContent);
-		listenForOutfit();
+		if (e.key === "Enter") {
+			characterData.name = element.value;
+			typeIntro(hatContent);
+			listenForOutfit();
+		}
 	});
 }
 
@@ -90,12 +91,13 @@ function listenForBio() {
 
 function listenforSave() {
 	const element = document.getElementById(bioContent.id);
-	const input = document.getElementById(bioContent.inputId);
+	//const input = document.getElementById(bioContent.inputId);
 	element.addEventListener(bioContent.events, (e) => {
-		e.preventDefault();
-		characterData.biography = input.value;
-		console.log("time to send data!", characterData);
-		saveCharacter();
+		if (e.key === "Enter") {
+			characterData.biography = element.value;
+			console.log("time to send data!", characterData);
+			//saveCharacter();
+		}
 	});
 }
 

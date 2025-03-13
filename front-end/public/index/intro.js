@@ -3,15 +3,15 @@ import Story from "./story.js";
 
 export default function typeIntro(props) {
 	let input = "";
+	let textId;
 
 	if (props.type === "text") {
+		textId = props.id;
 		input = `
-        <form action="" id="${props.id}">
-		    <input type="text" id="${props.inputId}">
-        </form>`;
+        <textarea id=${props.id} class="input-text"></textarea>`;
 	} else if (props.type === "select") {
 		for (let i = 0; i < props.events.length; i++) {
-			input += `<button id=${props.events[i].id}>
+			input += `<button id=${props.events[i].id} onclick=${props.events[i].handler} >
             ${props.events[i].content}
             </button>`;
 		}
@@ -20,9 +20,6 @@ export default function typeIntro(props) {
 	let htmlContent = `
     <p class="tortoise-text" id="tortoiseText"></p>
     <div class="button-container hidden" id="button">
-	    <button onclick="window.location.href='/create.html'">
-		    I prefer the old way
-        </button>
         ${input}
     </div>`;
 
@@ -33,6 +30,6 @@ export default function typeIntro(props) {
 	let buttons = document.getElementById("button");
 	let string = props.string;
 
-	let intro = new Story(tortoiseText, buttons, string, 40, 1500);
+	let intro = new Story(tortoiseText, buttons, string, 40, 1500, textId);
 	intro.typeString();
 }

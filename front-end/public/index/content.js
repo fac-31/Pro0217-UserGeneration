@@ -3,9 +3,16 @@ export const introContent = {
 	type: "select",
 	events: [
 		{
+			id: "formRoute",
+			content: "I prefer a simple form",
+			event: "click",
+			handler: "window.location.href='/create.html'",
+		},
+		{
 			id: "button1",
 			content: "I'm liking it!",
 			event: "click",
+			handler: "",
 		},
 	],
 };
@@ -18,16 +25,19 @@ export const hatContent = {
 			id: "red",
 			content: "Red",
 			event: "click",
+			handler: "",
 		},
 		{
 			id: "green",
 			content: "Green",
 			event: "click",
+			handler: "",
 		},
 		{
 			id: "blue",
 			content: "Blue",
 			event: "click",
+			handler: "",
 		},
 	],
 };
@@ -40,16 +50,19 @@ export const outfitContent = {
 			id: "red",
 			content: "Red",
 			event: "click",
+			handler: "",
 		},
 		{
 			id: "green",
 			content: "Green",
 			event: "click",
+			handler: "",
 		},
 		{
 			id: "blue",
 			content: "Blue",
 			event: "click",
+			handler: "",
 		},
 	],
 };
@@ -62,16 +75,19 @@ export const bootsContent = {
 			id: "red",
 			content: "Red",
 			event: "click",
+			handler: "",
 		},
 		{
 			id: "green",
 			content: "Green",
 			event: "click",
+			handler: "",
 		},
 		{
 			id: "blue",
 			content: "Blue",
 			event: "click",
+			handler: "",
 		},
 	],
 };
@@ -84,16 +100,19 @@ export const skinContent = {
 			id: "red",
 			content: "Red",
 			event: "click",
+			handler: "",
 		},
 		{
 			id: "green",
 			content: "Green",
 			event: "click",
+			handler: "",
 		},
 		{
 			id: "blue",
 			content: "Blue",
 			event: "click",
+			handler: "",
 		},
 	],
 };
@@ -103,7 +122,7 @@ export const bioContent = {
 	type: "text",
 	id: "biography",
 	inputId: "bioValue",
-	events: "submit",
+	events: "keydown",
 };
 
 export const nameContent = {
@@ -111,5 +130,5 @@ export const nameContent = {
 	type: "text",
 	id: "name",
 	inputId: "nameValue",
-	events: "submit",
+	events: "keydown",
 };
