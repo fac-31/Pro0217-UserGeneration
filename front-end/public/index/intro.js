@@ -1,4 +1,4 @@
-import Story from "./story.js";
+import Typewriter from "./typewriter.js";
 //newStory(htmlElement, choiceElement, string, delay, pause)
 
 export default function typeIntro(props) {
@@ -30,6 +30,14 @@ export default function typeIntro(props) {
 	let buttons = document.getElementById("button");
 	let string = props.string;
 
-	let intro = new Story(tortoiseText, buttons, string, 40, 1500, textId);
-	intro.typeString();
+	let pause = [];
+	let typewriter = new Typewriter(
+		string,
+		40,
+		pause,
+		tortoiseText,
+		buttons,
+		textId
+	);
+	typewriter.start();
 }

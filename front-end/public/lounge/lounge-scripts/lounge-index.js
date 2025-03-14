@@ -40,6 +40,7 @@ function listenForWeapon() {
 }
 
 async function displayBattle(id) {
+	//let intruder = new BuildCharacter("intruderCanvas",)
 	const battleData = await triggerBattle(id);
 	const battleContent = formatBattleData(battleData);
 	typeIntro(battleContent);
