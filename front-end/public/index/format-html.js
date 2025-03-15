@@ -1,14 +1,17 @@
 import Typewriter from "./typewriter.js";
-//newStory(htmlElement, choiceElement, string, delay, pause)
 
-export default function typeIntro(props) {
+//Renders relevent HTML and calls Typewriter methods
+export default function formatHtml(props) {
 	let input = "";
 	let textId;
 
+	// sets input as a textArea
 	if (props.type === "text") {
 		textId = props.id;
 		input = `
         <textarea id=${props.id} class="input-text"></textarea>`;
+
+		// sets input as a set of buttons
 	} else if (props.type === "select") {
 		for (let i = 0; i < props.events.length; i++) {
 			input += `<button id=${props.events[i].id} onclick=${props.events[i].handler} >
@@ -17,24 +20,22 @@ export default function typeIntro(props) {
 		}
 	}
 
-	let htmlContent = `
-    <p class="tortoise-text" id="tortoiseText"></p>
-    <div class="button-container hidden" id="button">
-        ${input}
-    </div>`;
+	let htmlElement = `<p class="tortoise-text" id="tortoiseText"></p>
+					<div class="button-container hidden" id="button"> ${input} </div>`;
 
+	// renders HTML
 	let render = document.getElementById("storyContainer");
-	render.innerHTML = htmlContent;
+	render.innerHTML = htmlElement;
 
+	// varables to send to the typewriter
 	let tortoiseText = document.getElementById("tortoiseText");
 	let buttons = document.getElementById("button");
-	let string = props.string;
 
-	let pause = [];
+	// runs the Typewriter
 	let typewriter = new Typewriter(
-		string,
-		40,
-		pause,
+		props.string,
+		props.delay,
+		props.pause,
 		tortoiseText,
 		buttons,
 		textId

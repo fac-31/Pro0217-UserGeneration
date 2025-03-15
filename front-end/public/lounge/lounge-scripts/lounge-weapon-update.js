@@ -50,17 +50,23 @@ export async function triggerBattle(weaponId) {
 }
 
 export function formatBattleData(battleData) {
-	const battleContent = {
-		string: battleData.battleStory,
-		type: "select",
-		events: [
-			{
-				id: "endButton",
-				content: "What do we do now?",
-				event: "click",
-				handler: "",
-			},
-		],
-	};
+	const battleContent = [
+		{
+			string: battleData.battleStory,
+			type: "select",
+			pause: [],
+			delay: 40,
+			secondCall: true,
+			events: [
+				{
+					id: "endButton",
+					content: "What do we do now?",
+					event: "click",
+					handler: "",
+					eventCall: "callBack()",
+				},
+			],
+		},
+	];
 	return battleContent;
 }

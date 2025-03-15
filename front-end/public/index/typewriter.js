@@ -16,7 +16,6 @@ export default class Typewriter {
 	}
 
 	type() {
-		console.log(this.text);
 		if (this.i < this.string.length) {
 			if (this.string[this.i] === "~") {
 				setTimeout(() => this.type(), this.pause[0]);
