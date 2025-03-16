@@ -18,6 +18,6 @@ async function fetchBackground() {
 }
 
 export default function displayImage(url) {
-	const body = document.querySelector("body");
-	body.style.backgroundImage = `url(${url})`;
+	const background = document.getElementById("mainContent");
+	background.style.backgroundImage = `url(${url})`;
 }
