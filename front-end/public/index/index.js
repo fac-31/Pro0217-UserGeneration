@@ -9,8 +9,13 @@ mainContent.style.backgroundImage = "url(../index/tortoise-livingroom.png)";
 const characterData = {};
 
 const contents = [
+	content.intro1,
+	content.intro2,
+	content.intro3,
 	content.introContent,
+	content.build1,
 	content.nameContent,
+	content.build2,
 	content.hatContent,
 	content.outfitContent,
 	content.bootsContent,
