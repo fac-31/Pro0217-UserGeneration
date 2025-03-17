@@ -1,2 +1,9 @@
+# Character Creator and Battle Simulator
 # fac-31-Pro0217-UserGeneration
-The ability to create a new user with some added twist!
+
+
+Welcome to FAC-31's User Generation project!
+
+This application allows users to create custom characters via design
+
+## 📚 Documentation 
