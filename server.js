@@ -24,7 +24,13 @@ const router = require("./back-end/routes/routes");
 
 //app.use("/api", saveCharacter);
 
-app.use(cors());
+app.use(cors({
+
+	origin: "*",
+	methods: "GET,POST,PUT,DELETE",
+	allowedHeaders: ["Content-Type", "Authorization"],
+	credentials: true
+  }));
 
 //NC - use express to parse JSON data
 app.use(express.json());
@@ -42,6 +48,11 @@ app.get("/create.html", (req, res) => {
 	res.sendFile(__dirname + "/front-end/public/create/create.html");
 });
 
+//JM test route
+app.get("/lounge-tale.html", (req, res) => {
+	res.sendFile(__dirname + "/front-end/public/lounge/lounge-tale.html");
+});
+
 // Route for character and weapon data
 app.use(router);
 
@@ -53,7 +64,6 @@ app.listen(PORT, () => {
 //NC- installed to help with showing all logs
 const morgan = require("morgan");
 app.use(morgan("dev"));
-
 
 //Browser sync setup
 // browserSync.init({
