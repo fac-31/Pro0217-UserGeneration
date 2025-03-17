@@ -26,7 +26,7 @@ The image generation draws from the character's appearance, name, and descriptio
 Characters and their attributes are saved as part of a JSON array on the server.
 Random battles with existing characters are called on character creation, and the punishment for losing is deletion!
 
-## ✨ API endpoints
+### ✨ API endpoints
 
 Currently, UserGeneration is a self-contained application, but it is possible to use its character generation feature independently.
 To do so, create a POST request to "https://pro0217-usergeneration.onrender.com/characters" with a JSON object with this structures:
@@ -43,7 +43,7 @@ characterData = {
 ```
 
 
-## 🚀 Running locally
+### 🚀 Running locally
 
 1. Clone the repository:
 ```bash
