@@ -20,7 +20,7 @@ document
 		const characterData = { name, biography, skin, hat, outfit, boots };
 
 		//NC - convert javascript object into JSON and send to backend
-		fetch("http://localhost:3000/characters", {
+		fetch("https://localhost:3000/characters", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(characterData),
