@@ -1,14 +1,20 @@
 import formatHtml from "./format-html.js";
+import { animate, drawWizard } from "./animate.js";
+
 //JM creates event listeners for the array of content
 let i = 0;
 export default function formatEvents(contents, data, callBack) {
 	function callNextMessage() {
-		i++;
-		formatEvents(contents, data, callBack);
+		drawWizard();
+		if (contents[i].timeout) {
+			i++;
+			formatEvents(contents, data, callBack);
+		}
 	}
 	if (i < contents.length) {
 		console.log(contents);
 		formatHtml(contents[i], callNextMessage);
+		animate();
 
 		//JM event listener for buttons
 		if (contents[i].type === "select") {

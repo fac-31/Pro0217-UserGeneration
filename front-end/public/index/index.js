@@ -9,7 +9,7 @@ mainContent.style.backgroundImage = "url(../index/tortoise-livingroom.png)";
 const characterData = {};
 
 const contents = [
-	//content.intro1,
+	content.intro1,
 	//content.intro2,
 	//content.intro3,
 	content.introContent,
