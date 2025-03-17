@@ -2,7 +2,9 @@ async function fetchBackground() {
 	console.log("about to fetch background");
 	let url;
 	try {
-		url = await fetch("/background-image").then((res) => res.json());
+		url = await fetch("/background-image").then((res) => //http://localhost:3000/background-image"
+			res.json()
+		);
 		console.log(url);
 
 		//if (!response.ok) {
