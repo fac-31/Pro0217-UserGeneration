@@ -50,10 +50,12 @@ async function battle() {
         function setWinner(winner, loser) {
             console.log("comparison of stats has been completed. the battle was based on", battleType);
             console.log("Winner:", winner.name, 
-                "stats comparison of", winner.battleType,
+                "biography", winner.biography,
                 "Weapon:", winner.weapon,
-                "Empathy:", winner.Empathy);
+                "Empathy:", winner.Empathy,
+                "floor_thoughts:", winner.floor_thoughts);
             console.log("Loser:", loser.name, 
+                "biography", loser.biography,
                 "Weapon:", loser.weapon, 
                 "Empathy:", loser.Empathy);
 
@@ -62,11 +64,14 @@ async function battle() {
                     name: winner.name,
                     weapon: winner.weapon,
                     empathy: winner.Empathy,
+                    biography: winner.biography,
+                    floor_thoughts: winner.floor_thoughts,
                 },
                 loser: {
                     name: loser.name,
                     weapon: loser.weapon,
                     empathy: loser.Empathy,
+                    biography: loser.biography,
                 },
                 battleType: battleType,
             };

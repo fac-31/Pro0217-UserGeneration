@@ -25,6 +25,7 @@ const router = require("./back-end/routes/routes");
 //app.use("/api", saveCharacter);
 
 app.use(cors({
+
 	origin: "*",
 	methods: "GET,POST,PUT,DELETE",
 	allowedHeaders: ["Content-Type", "Authorization"],

@@ -9,8 +9,13 @@ mainContent.style.backgroundImage = "url(../index/tortoise-livingroom.png)";
 const characterData = {};
 
 const contents = [
+	//content.intro1,
+	//content.intro2,
+	//content.intro3,
 	content.introContent,
+	content.build1,
 	content.nameContent,
+	content.build2,
 	content.hatContent,
 	content.outfitContent,
 	content.bootsContent,
@@ -22,7 +27,7 @@ formatEvents(contents, characterData, saveCharacter);
 
 export function saveCharacter(characterData) {
 	//NC - convert javascript object into JSON and send to backend
-	fetch("http://localhost:3000/characters", {
+	fetch("/characters", {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(characterData),

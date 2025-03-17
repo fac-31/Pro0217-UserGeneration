@@ -1,9 +1,20 @@
 export default class Typewriter {
-	constructor(string, delay, pause, htmlElement, choiceElement, textId) {
+	constructor(
+		string,
+		delay,
+		pause,
+		htmlElement,
+		choiceElement,
+		textId,
+		timeout,
+		callToEvents
+	) {
 		//provided variables
 		this.string = string;
 		this.delay = delay;
 		this.pause = pause;
+		this.timeout = timeout;
+		this.callToEvents = callToEvents;
 
 		this.text = htmlElement;
 		this.choice = choiceElement;
@@ -18,7 +29,7 @@ export default class Typewriter {
 	type() {
 		if (this.i < this.string.length) {
 			if (this.string[this.i] === "~") {
-				setTimeout(() => this.type(), this.pause[0]);
+				setTimeout(() => this.type(), this.pause[this.pauseI]);
 				this.pauseI++;
 			} else {
 				this.text.innerHTML += this.string[this.i];
@@ -29,10 +40,12 @@ export default class Typewriter {
 	}
 
 	calcTime() {
+		let addPause = 0;
+		let textPause = this.string.length * this.delay;
 		this.pause.forEach((p) => {
-			this.totalPause += p;
+			addPause += p;
 		});
-		this.totalPause += (this.string.length - this.pause.length) * this.delay;
+		this.totalPause = addPause + textPause;
 	}
 
 	showChoice() {
@@ -41,6 +54,11 @@ export default class Typewriter {
 			if (this.textArea) {
 				const element = document.getElementById(this.textArea);
 				element.focus();
+			}
+			if (this.timeout && this.callToEvents) {
+				setTimeout(() => {
+					this.callToEvents();
+				}, this.timeout);
 			}
 		}, this.totalPause);
 	}

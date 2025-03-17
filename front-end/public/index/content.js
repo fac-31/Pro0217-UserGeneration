@@ -1,23 +1,67 @@
 export const content = {
+	intro1: {
+		string:
+			"~Oh!~ Hello!~ I didn't see you there.~ I guess It's my eyes...~ I'm getting rather old...",
+		type: "read",
+		pause: [2000, 1000, 500, 1000, 1000],
+		delay: 60,
+		timeout: 1000,
+	},
+
+	intro2: {
+		string:
+			"~Enough about me! What brings you here?~ You want me to build you a living room!?",
+		type: "read",
+		pause: [1000, 3000],
+		delay: 60,
+		timeout: 1000,
+	},
+
+	intro3: {
+		string: "~...It might take me a while, but okay.",
+		type: "read",
+		pause: [1000],
+		delay: 60,
+		timeout: 1000,
+	},
+
 	introContent: {
-		string: "~What do you think of this format?",
+		string:
+			"~ Now, do you want me to design a personalised living room just for you? Or are you happy with whatever I feel like building?",
 		type: "select",
-		pause: [2000],
-		delay: 40,
+		pause: [1000],
+		delay: 50,
 		events: [
 			{
-				id: "formRoute",
-				content: "I prefer a simple form",
+				id: "buildUser",
+				content: "I want you to build one just for me!",
 				event: "click",
-				handler: "window.location.href='/create.html'",
+				handler: "",
 			},
 			{
-				id: "button1",
-				content: "I'm liking it!",
+				id: "randomCharacter",
+				content: "I'm happy with whatever",
 				event: "click",
 				handler: "",
 			},
 		],
+	},
+
+	build1: {
+		string: "~Ok.~ Looks like I'll have to get to know you a bit!",
+		type: "read",
+		pause: [1000, 1000],
+		delay: 60,
+		timeout: 1000,
+	},
+
+	build2: {
+		string:
+			"~I don't mean to be rude, but I think I'd like to make you an outfit to match you living room.~ So...",
+		type: "read",
+		pause: [1000, 500],
+		delay: 60,
+		timeout: 1000,
 	},
 
 	hatContent: {
@@ -49,7 +93,7 @@ export const content = {
 	},
 
 	outfitContent: {
-		string: "~What color outfit would you like?",
+		string: "~And what color outfit would you like?",
 		key: "outfit",
 		type: "select",
 		pause: [1000],
@@ -77,10 +121,11 @@ export const content = {
 	},
 
 	bootsContent: {
-		string: "~What color boots would you like?",
+		string:
+			"~... Wer'e definitely going to need shoes with this!~ What color boots would you like?",
 		key: "boots",
 		type: "select",
-		pause: [1000],
+		pause: [1000, 500],
 		delay: 40,
 		events: [
 			{

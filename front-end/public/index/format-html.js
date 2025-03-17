@@ -1,7 +1,12 @@
 import Typewriter from "./typewriter.js";
 
 //Renders relevent HTML and calls Typewriter methods
-export default function formatHtml(props) {
+export default function formatHtml(props, callBack) {
+	//JM Call back function to begin next content loop
+	function callToEvents() {
+		callBack();
+	}
+
 	let input = "";
 	let textId;
 
@@ -14,7 +19,7 @@ export default function formatHtml(props) {
 		// sets input as a set of buttons
 	} else if (props.type === "select") {
 		for (let i = 0; i < props.events.length; i++) {
-			input += `<button id=${props.events[i].id} onclick=${props.events[i].handler} >
+			input += `<button id=${props.events[i].id} class="button" onclick=${props.events[i].handler} >
             ${props.events[i].content}
             </button>`;
 		}
@@ -38,7 +43,9 @@ export default function formatHtml(props) {
 		props.pause,
 		tortoiseText,
 		buttons,
-		textId
+		textId,
+		props.timeout,
+		callToEvents
 	);
 	typewriter.start();
 }
