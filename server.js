@@ -25,9 +25,11 @@ const router = require("./back-end/routes/routes");
 //app.use("/api", saveCharacter);
 
 app.use(cors({
-	origin: "https://pro0217-usergeneration.onrender.com",
+
+	origin: "*",
 	methods: "GET,POST,PUT,DELETE",
-	allowedHeaders: "Content-Type"
+	allowedHeaders: ["Content-Type", "Authorization"],
+	credentials: true
   }));
 
 //NC - use express to parse JSON data
