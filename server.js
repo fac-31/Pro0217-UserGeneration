@@ -24,7 +24,13 @@ const router = require("./back-end/routes/routes");
 
 //app.use("/api", saveCharacter);
 
-app.use(cors());
+app.use(cors({
+
+	origin: "*",
+	methods: "GET,POST,PUT,DELETE",
+	allowedHeaders: ["Content-Type", "Authorization"],
+	credentials: true
+  }));
 
 //NC - use express to parse JSON data
 app.use(express.json());
