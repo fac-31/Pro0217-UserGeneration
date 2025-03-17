@@ -1,7 +1,7 @@
 export default async function fetchData() {
 	let data;
 	try {
-		data = await fetch("http://localhost:3000/characters").then((res) =>
+		data = await fetch("/characters").then((res) => //http://localhost:3000/characters
 			res.json()
 		);
 	} catch (error) {
