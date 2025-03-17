@@ -1,5 +1,8 @@
 import { content } from "./content.js";
 import formatEvents from "./format-events.js";
+require("dotenv").config();
+
+const PORT = process.env.PORT || 3000;
 
 //JM displays Tortoise background
 const mainContent = document.getElementById("mainContent");
@@ -22,7 +25,7 @@ formatEvents(contents, characterData, saveCharacter);
 
 export function saveCharacter(characterData) {
 	//NC - convert javascript object into JSON and send to backend
-	fetch("http://localhost:3000/characters", {
+	fetch(`http://localhost:${PORT}/characters`, {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(characterData),
