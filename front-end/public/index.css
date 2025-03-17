@@ -9,6 +9,11 @@ body {
 	height: 100vh;
 }
 
+a {
+	color: transparent;
+	position: absolute;
+}
+
 .container {
 	min-height: 100%;
 	display: flex;
@@ -59,6 +64,9 @@ body {
 .button-container {
 	display: flex;
 	justify-content: space-around;
+}
+.button {
+	/*styles the user options*/
 }
 
 .input-text {

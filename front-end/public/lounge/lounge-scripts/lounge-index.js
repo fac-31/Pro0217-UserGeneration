@@ -4,7 +4,7 @@ import displayImage from "./lounge-fetch-background.js";
 import { triggerBattle, formatBattleData } from "./lounge-weapon-update.js";
 
 import { intruderAlert, pickWeapon } from "./lounge-content.js";
-import typeIntro from "../../index/intro.js";
+import formatEvents from "../../index/format-events.js";
 
 async function callFunctions() {
 	await fetchData().then((res) => {
@@ -16,43 +16,20 @@ async function callFunctions() {
 }
 callFunctions();
 
-typeIntro(intruderAlert);
-intruderAlert.events.forEach(({ id, event }) => {
-	const element = document.getElementById(id);
-	if (element) {
-		element.addEventListener(event, () => {
-			typeIntro(pickWeapon);
-			listenForWeapon();
-		});
-	}
-});
+const contents = [intruderAlert, pickWeapon];
+const weaponData = {};
+formatEvents(contents, weaponData, displayBattle);
 
-function listenForWeapon() {
-	pickWeapon.events.forEach(({ id, event }) => {
-		const element = document.getElementById(id);
-		if (element) {
-			element.addEventListener(event, () => {
-				console.log("time to save weapon!", id);
-				displayBattle(id);
-			});
-		}
-	});
-}
-
-async function displayBattle(id) {
-	const battleData = await triggerBattle(id);
+async function displayBattle(data) {
+	console.log(data);
+	//let intruder = new BuildCharacter("intruderCanvas",)
+	const battleData = await triggerBattle(data.weapon);
 	const battleContent = formatBattleData(battleData);
-	typeIntro(battleContent);
-	listenForEnd(battleContent);
+	if (battleContent) {
+		formatEvents(battleContent, "", end);
+	}
 }
 
-function listenForEnd(battleContent) {
-	battleContent.events.forEach(({ id, event }) => {
-		const element = document.getElementById(id);
-		if (element) {
-			element.addEventListener(event, () => {
-				console.log("I dunno man");
-			});
-		}
-	});
+function end() {
+	alert("I dunno man!");
 }
