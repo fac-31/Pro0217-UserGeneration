@@ -1,16 +1,16 @@
-# Character Creator and Battle Simulator
-# fac-31-Pro0217-UserGeneration
+# 🐢 UserGeneration: Character Creator and Battle Simulator
+##### fac-31-Pro0217-UserGeneration
 
 Welcome to FAC-31's User Generation project!
 
-## 📝 About
+### 📝 About
 
-This application allows users to create custom characters by choosing their appearance and describing themselves.
+This application allows users to create **custom characters** by choosing their appearance and describing themselves.
 Create your character, and discover their own custom lounge, defined by their attributes and description.
 But be careful, existing characters might want to test your abilities!
 Enjoy a vivid description of your character's battle, which may take place in wildly different ways, depending on your choices!
 
-## 📚 Documentation
+### 📚 Documentation
 
 UserGeneration is powered by calls to OpenAI's Chat-GPT-4o and DALL-E 3.
 After some constrained appearance choices, the free text of the character description is sent to Chat-GPT.
@@ -26,10 +26,10 @@ The image generation draws from the character's appearance, name, and descriptio
 Characters and their attributes are saved as part of a JSON array on the server.
 Random battles with existing characters are called on character creation, and the punishment for losing is deletion!
 
-## API endpoints
+## ✨ API endpoints
 
 Currently, UserGeneration is a self-contained application, but it is possible to use its character generation feature independently.
-To do so, create a POST request with a JSON object that look like:
+To do so, create a POST request to "https://pro0217-usergeneration.onrender.com/characters" with a JSON object with this structures:
 
 ```
 characterData = {
@@ -40,4 +40,27 @@ characterData = {
     outfit: "string_outfit",
     boots: "string_boots"
     };
+```
+
+
+## 🚀 Running locally
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/Pro0217-MUserGeneration.git
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Create a `.env` file with your OpenAI API key:
+```env
+OPEN_API_KEY=your_openai_api_key
+```
+
+4. Start the server:
+```bash
+node server.js
 ```
