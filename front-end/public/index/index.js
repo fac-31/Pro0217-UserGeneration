@@ -24,7 +24,7 @@ formatEvents(contents, characterData, saveCharacter);
 
 export function saveCharacter(characterData) {
 	//NC - convert javascript object into JSON and send to backend
-	fetch(`http://localhost:${PORT}/characters`, {
+	fetch(`characters`, {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(characterData),
