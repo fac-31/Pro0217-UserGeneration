@@ -21,9 +21,9 @@ document
 		//NC - extracted information turned into Javascript object
 		const characterData = { name, biography, skin, hat, outfit, boots };
 
-		const BASE_URL = process.env.NODE_ENV === 'production' 
-  		  ? 'https://pro0217-usergeneration.onrender.com'  // Use the render website for production
-  		  : 'http://localhost:3000';
+		// const BASE_URL = process.env.NODE_ENV === 'production' 
+  		//   ? 'https://pro0217-usergeneration.onrender.com'  // Use the render website for production
+  		//   : 'http://localhost:3000';
 
 
 		//NC - convert javascript object into JSON and send to backend
