@@ -47,7 +47,7 @@ characterData = {
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/Pro0217-MUserGeneration.git
+git clone https://github.com/yourusername/Pro0217-UserGeneration.git
 ```
 
 2. Install dependencies:
