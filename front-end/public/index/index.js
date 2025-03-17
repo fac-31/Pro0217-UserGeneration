@@ -1,8 +1,7 @@
 import { content } from "./content.js";
 import formatEvents from "./format-events.js";
-require("dotenv").config();
 
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 //JM displays Tortoise background
 const mainContent = document.getElementById("mainContent");
