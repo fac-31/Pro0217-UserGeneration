@@ -93,7 +93,7 @@ export const content = {
 	},
 
 	outfitContent: {
-		string: "~What color outfit would you like?",
+		string: "~And what color outfit would you like?",
 		key: "outfit",
 		type: "select",
 		pause: [1000],
@@ -121,10 +121,11 @@ export const content = {
 	},
 
 	bootsContent: {
-		string: "~What color boots would you like?",
+		string:
+			"~... Wer'e definitely going to need shoes with this!~ What color boots would you like?",
 		key: "boots",
 		type: "select",
-		pause: [1000],
+		pause: [1000, 500],
 		delay: 40,
 		events: [
 			{
