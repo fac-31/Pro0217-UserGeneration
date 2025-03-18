@@ -1,13 +1,24 @@
 import formatHtml from "./format-html.js";
+import { animate, setStop } from "./animate.js";
+
 //JM creates event listeners for the array of content
 let i = 0;
+animate();
 export default function formatEvents(contents, data, callBack) {
 	function callNextMessage() {
-		i++;
-		formatEvents(contents, data, callBack);
+		setStop(true);
+		if (contents[i].timeout) {
+			i++;
+			setTimeout(() => {
+				setStop(false);
+			}, contents[i].pause[0]);
+			formatEvents(contents, data, callBack);
+		}
 	}
 	if (i < contents.length) {
-		console.log(contents);
+		setTimeout(() => {
+			setStop(false);
+		}, contents[i].pause[0]);
 		formatHtml(contents[i], callNextMessage);
 
 		//JM event listener for buttons

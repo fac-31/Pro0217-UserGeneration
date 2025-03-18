@@ -32,7 +32,7 @@ a {
 }
 .character-canvas,
 .intruder-canvas {
-	border: solid 2px white;
+	border: solid 2px transparent;
 	height: 700px;
 	width: 350px;
 }

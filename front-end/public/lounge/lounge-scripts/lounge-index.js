@@ -3,7 +3,7 @@ import BuildCharacter from "./lounge-display-character.js";
 import displayImage from "./lounge-fetch-background.js";
 import { triggerBattle, formatBattleData } from "./lounge-weapon-update.js";
 
-import { intruderAlert, pickWeapon } from "./lounge-content.js";
+import { content } from "./lounge-content.js";
 import formatEvents from "../../index/format-events.js";
 
 async function callFunctions() {
@@ -16,7 +16,11 @@ async function callFunctions() {
 }
 callFunctions();
 
-const contents = [intruderAlert, pickWeapon];
+const contents = [
+	content.loungeIntro1,
+	content.intruderAlert,
+	content.pickWeapon,
+];
 const weaponData = {};
 formatEvents(contents, weaponData, displayBattle);
 

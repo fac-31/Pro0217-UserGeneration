@@ -50,15 +50,18 @@ export default class Typewriter {
 
 	showChoice() {
 		setTimeout(() => {
+			//drawWizard();
 			this.choice.classList.remove("hidden");
 			if (this.textArea) {
 				const element = document.getElementById(this.textArea);
 				element.focus();
 			}
-			if (this.timeout && this.callToEvents) {
+			if (this.timeout) {
 				setTimeout(() => {
 					this.callToEvents();
 				}, this.timeout);
+			} else {
+				this.callToEvents();
 			}
 		}, this.totalPause);
 	}
