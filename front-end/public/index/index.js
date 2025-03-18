@@ -23,11 +23,27 @@ const contents = [
 	content.bioContent,
 ];
 
+loadingContent = [
+	content.loading,
+	content.loading,
+	content.loading,
+	content.loading,
+	content.loading,
+	content.loading,
+];
+
 formatEvents(contents, characterData, saveCharacter);
 
+let ready = false;
+function setReady(state) {
+	ready = state;
+}
+
 export function saveCharacter(characterData) {
+	formatEvents(loadingContent, "", setReady);
 	//NC - convert javascript object into JSON and send to backend
-	fetch("/characters", {  //http://localhost:3000/characters
+	fetch("/characters", {
+		//http://localhost:3000/characters
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(characterData),
@@ -36,8 +52,9 @@ export function saveCharacter(characterData) {
 		.then((response) => response.json())
 		.then((data) => {
 			console.log("backend response:", data);
-			alert("Success!");
-			window.location.href = `/lounge/lounge-tale.html`; //NC- userId is passed into the url
+			if (ready) {
+				window.location.href = `/lounge/lounge-tale.html`; //NC- userId is passed into the url
+			}
 		})
 
 		//NC - .catch error handling, alert message prompting user to re-enter and check info

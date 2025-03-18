@@ -198,4 +198,13 @@ export const content = {
 		inputId: "nameValue",
 		events: "keydown",
 	},
+
+	loading: {
+		string: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, placeat maxime est excepturi odit id officia quaerat quis cumque nostrum sapiente illum, maiores soluta quisquam sed itaque tempora aspernatur molestias.`,
+
+		type: "read",
+		pause: [1000],
+		delay: 60,
+		timeout: 1000,
+	},
 };
