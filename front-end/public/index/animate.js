@@ -5,31 +5,29 @@ const ctx = canvas.getContext("2d");
 const wizard = new Wizard();
 let gameFrame = 0;
 let currentImage;
-let stop;
+let stop = true;
 
-export function animate() {
-	if (stop) {
-		stop = false;
-	}
-	ctx.clearRect(0, 0, 350, 700);
-	gameFrame++;
-	console.log(gameFrame);
-
-	if (gameFrame % 10 === 0) {
-		if (currentImage === "wizard2") {
-			currentImage = "wizard1";
-		} else {
-			currentImage = "wizard2";
-		}
-	}
-
-	wizard.draw(ctx, currentImage);
-	if (!stop) {
-		requestAnimationFrame(animate);
-	}
+export function setStop(setStop) {
+	stop = setStop;
 }
 
-export function drawWizard() {
-	stop = true;
-	wizard.draw(ctx, "wizard2");
+export function animate() {
+	ctx.clearRect(0, 0, 350, 700);
+	gameFrame++;
+
+	if (stop === true) {
+		currentImage = "wizard2";
+		wizard.draw(ctx, currentImage);
+	} else if (stop === false) {
+		if (gameFrame % 30 === 0) {
+			if (currentImage === "wizard2") {
+				currentImage = "wizard1";
+			} else {
+				currentImage = "wizard2";
+			}
+		}
+	}
+	wizard.draw(ctx, currentImage);
+
+	requestAnimationFrame(animate);
 }
