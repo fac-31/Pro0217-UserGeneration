@@ -3,6 +3,7 @@ import BuildCharacter from "./lounge-display-character.js";
 import displayImage from "./lounge-fetch-background.js";
 import { triggerBattle, formatBattleData } from "./lounge-weapon-update.js";
 
+
 import { intruderAlert, pickWeapon } from "./lounge-content.js";
 import formatEvents from "../../index/format-events.js";
 
@@ -26,10 +27,8 @@ async function displayBattle(data) {
 	const battleData = await triggerBattle(data.weapon);
 	const battleContent = formatBattleData(battleData);
 	if (battleContent) {
-		formatEvents(battleContent, "", end);
+		formatEvents(battleContent, "");
 	}
 }
 
-function end() {
-	alert("I dunno man!");
-}
+

@@ -36,6 +36,13 @@ export function saveCharacter(characterData) {
 		.then((response) => response.json())
 		.then((data) => {
 			console.log("backend response:", data);
+
+			// Store userId in localStorage
+			if (data.userId) {
+				localStorage.setItem("currentUserId", data.userId);
+				console.log("User ID stored:", data.userId);
+			}
+			
 			alert("Success!");
 			window.location.href = `/lounge/lounge-tale.html`; //NC- userId is passed into the url
 		})

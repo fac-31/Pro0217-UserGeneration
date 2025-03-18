@@ -198,4 +198,16 @@ export const content = {
 		inputId: "nameValue",
 		events: "keydown",
 	},
+
+	youDead: {
+		string:
+			"~I think you dead..............~ So...",
+		type: "read",
+		pause: [1000, 500],
+		delay: 60,
+		timeout: 1000,
+	},
+
+
+
 };
