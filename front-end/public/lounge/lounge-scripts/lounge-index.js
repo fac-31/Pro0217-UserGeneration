@@ -22,7 +22,11 @@ const contents = [
 	content.pickWeapon,
 ];
 const weaponData = {};
-formatEvents(contents, weaponData, displayBattle);
+formatEvents(contents, weaponData, displayBattle, dummyFunction);
+
+function dummyFunction(something) {
+	something = something;
+}
 
 async function displayBattle(data) {
 	console.log(data);
@@ -30,7 +34,7 @@ async function displayBattle(data) {
 	const battleData = await triggerBattle(data.weapon);
 	const battleContent = formatBattleData(battleData);
 	if (battleContent) {
-		formatEvents(battleContent, "", end);
+		formatEvents(battleContent, "", end, dummyFunction);
 	}
 }
 

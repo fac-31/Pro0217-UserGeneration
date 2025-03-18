@@ -200,8 +200,8 @@ export const content = {
 	},
 
 	loading: {
-		string: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, placeat maxime est excepturi odit id officia quaerat quis cumque nostrum sapiente illum, maiores soluta quisquam sed itaque tempora aspernatur molestias.`,
-
+		string: `Lorem ipsum dolor sit amet consectetur `,
+		loading: true,
 		type: "read",
 		pause: [1000],
 		delay: 60,
