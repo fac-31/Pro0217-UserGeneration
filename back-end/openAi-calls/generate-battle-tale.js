@@ -10,7 +10,7 @@ async function generateBattleTale(winner, loser) {
         const battleType = await chooseBattleType();
         
         if (winner && loser && battleType) {
-            prompt = `"You are a childrens book writer who specialises in spy novels. Write a spy battle in a living room, use the ${winner.floor_thoughts} to help set the scene in the room. ${winner.name} fights ${loser.name} using ${winner.weapon} against ${loser.weapon}. Compare the opponents ${battleType} attribute. Keep the tone of the battle humorous and use aspects of ${winner.biography} and ${loser.biography} to help personalise the story. Keep the battle under 100 words and with short sentences. If no name is entered for either character, create a name. The stand off always ends with a clear winner, make sure this is mentioned. Correct an grammatical errors and split words without spaces."`;
+            prompt = `"You are a childrens book writer who specialises in spy novels. Write a spy faceoff in a living room, use the ${winner.floor_thoughts} to help set the scene in the room. ${winner.name} fights ${loser.name} using ${winner.weapon} against ${loser.weapon}. Compare the opponents ${battleType}. Keep the tone of the battle humorous and use aspects each of the ${winner.biography} and ${loser.biography} to help personalise the story, keep these aspects reevant to each character. ${winner.name} is always the winner of the face off. Keep the battle under 100 words and with short sentences. If no name is entered for either character, create a name. End the paragraph mentioning the winner of the face off. Correct an grammatical errors and split words without spaces."`;
         } else {
             throw new Error("Winner, loser, or battle type is missing.");
         }

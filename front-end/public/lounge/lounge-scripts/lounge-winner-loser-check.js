@@ -2,48 +2,68 @@ import { deleteCharacter } from "./lounge-delete-user.js";
 
 // Winner loser check added
 export async function winnerlosercheck(loser) {
-    console.log("begin winner/loser check");
+    console.log("winner/loser function started");
+    console.log("Loser data received:", loser.userId);
+
+    // Ensure the button exists before attaching event listener
     const endButton = document.getElementById("endButton");
 
-    if (endButton) {
-        endButton.addEventListener("click", async () => {
-            const currentUserId = localStorage.getItem("userId");
+    if (!endButton) {
+        console.error("End button not found.");
+        console.log("button not on page yet")
+        return; 
+    }
 
-// If the loser userId matches the current user's ID, redirect to result.html
-            if (currentUserId === loser.userId) {
-                console.log("current user is the loser");
+    // Add the event listener only once
+    endButton.addEventListener("click", async () => {
+        const currentUserId = localStorage.getItem("currentUserId");
+        console.log("Current userId within localStorage:", currentUserId);
+
+        // Ensure currentUserId is valid
+        if (!currentUserId) {
+            console.error("Current userId not found in localStorage.");
+            return;
+        }
+
+        // If the loser userId matches the local storage current user's ID, redirect to result-loser.html
+        if (currentUserId === String(loser.userId)) {
+            console.log("Current user is the loser");
+
+            try {
+                // Show loading or feedback
+                alert("You lost! Deleting your character...");
 
                 const deleteUser = await deleteCharacter(loser.userId);
-
                 if (deleteUser) {
-                    console.log("You are the loser. Redirecting to result.html...");
-                    window.location.href = "/result-loser.html";
+                    console.log("You are the loser. Redirecting to result-loser.html...");
+                    window.location.href = "/front-end/public/death/death.html";
                 }
-            } else {  
-                console.log("You are the winner. Stay on page.");
-                alert("You defended your living room!");
+            } catch (error) {
+                console.error("Error deleting character:", error);
+                alert("There was an issue deleting your character. Please try again.");
+            }
+        } else {  
+            console.log("You are the winner. Stay on page.");
+            alert("You defended your living room!");
 
-                const mainContent = document.getElementById("mainContent");
+            const mainContent = document.getElementById("mainContent");
 
-                if (mainContent) {
-                    var gif = document.createElement("img");
-                    gif.src = "https://media.giphy.com/media/cYpV2OjeIyBRu5GpHQ/giphy.gif";
-                    gif.style.width = "300px";
-                    gif.style.display = "block";
-                    gif.style.margin = "20px auto";
+            if (mainContent) {
+                const gif = document.createElement("img");
+                gif.src = "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZTFtbDUxdXZ2ZHI4YjdjbTBwaXhkaTc4cWRqd3owZjc2cHg5cG82eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/D2hncA3u88gmeCFeoh/giphy.gif";
+                gif.style.width = "300px";
+                gif.style.display = "block";
+                gif.style.margin = "20px auto";
 
-                    mainContent.appendChild(gif);
+                mainContent.appendChild(gif);
 
-                    setTimeout(() => {
-                        gif.remove();
-                        console.log("GIF removed after 10 seconds.");
-                    }, 2500);
-                } else {
-                    console.error("mainContent element not found.");
-                }
-            }  
-        });
-    } else {
-        console.error("endButton element not found.");
-    }
+                setTimeout(() => {
+                    gif.remove();
+                    console.log("GIF removed after 2.5 seconds.");
+                }, 2500);
+            } else {
+                console.error("Error: mainContent element not found.");
+            }
+        }
+    }, { once: true }); // Ensures the event listener is only attached once
 }

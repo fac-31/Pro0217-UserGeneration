@@ -38,12 +38,9 @@ export async function triggerBattle(weaponId) {
 		const battleData = await battleResponse.json();
 		const { winner, loser } = battleData;
 		console.log("battle data:", battleData);
-
-		setTimeout(() => {
-			winnerlosercheck(loser); 
-		}, 1000); // Adjust delay if necessary
-
-		return battleData; // Return battle data for further use
+		console.log("check for loser userId:", battleData.loser.userId);
+	
+		return battleData; 
 
 	} catch (error) {
 		console.error("Error:", error);
@@ -63,8 +60,11 @@ export function formatBattleData(battleData) {
 			events: [
 				{
 					id: "endButton",
-					content: "What do we do now?",
+					content: "What happens next?", 
 					event: "click",
+					handler: () => { 
+						winnerlosercheck(battleData.loser); 
+					},
 				},
 			],
 		},
