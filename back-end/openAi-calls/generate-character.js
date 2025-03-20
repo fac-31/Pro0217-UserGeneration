@@ -31,69 +31,69 @@ async function getCharacter(client, characterData) {
 								description: "A measure of the characters physical power",
 								type: "number",
 							},
-							Str_thoughts: {
+							/* Str_thoughts: {
 								description:
 									"The reasoning behind choosing the value for 'Strength'",
-								type: "string",
-							},
+								type: "string", 
+							},*/
 							Dexterity: {
 								description: "A measure of the characters agility and reflexes",
 								type: "number",
 							},
-							Dex_thoughts: {
+							/* Dex_thoughts: {
 								description:
 									"The reasoning behind choosing the value for 'Dexterity'",
-								type: "string",
-							},
+								type: "string", 
+							},*/
 							Constitution: {
 								description: "A measure of the characters health and stamina",
 								type: "number",
 							},
-							Con_thoughts: {
+							/* Con_thoughts: {
 								description:
 									"The reasoning behind choosing the value for 'Constitution'",
-								type: "string",
-							},
+								type: "string", 
+							},*/
 							Intelligence: {
 								description:
 									"A measure of the characters intelligence and ability to reason",
 								type: "number",
 							},
-							Int_thoughts: {
+							/* Int_thoughts: {
 								description:
 									"The reasoning behind choosing the value for 'Intelligence'",
-								type: "string",
-							},
+								type: "string", 
+							},*/
 							Wisdom: {
 								description:
 									"A measure of the characters perceptiveness and insightful intuition",
 								type: "number",
 							},
-							Wis_thoughts: {
+							/* Wis_thoughts: {
 								description:
 									"The reasoning behind choosing the value for 'Wisdom'",
-								type: "string",
-							},
+								type: "string", 
+							},*/
 							Charisma: {
 								description:
 									"A measure of the characters ability to interact effectively with others - often persuasive",
 								type: "number",
 							},
-							Cha_thoughts: {
+							/* Cha_thoughts: {
 								description:
 									"The reasoning behind choosing the value for 'Charisma'",
-								type: "string",
-							},
+								type: "string", 
+							},*/
 							Empathy: {
 								description: "A measure of the characters ability to empathise",
 								type: "number",
 							},
-							Emp_thoughts: {
+							/* Emp_thoughts: {
 								description:
 									"The reasoning behind choosing the value for 'Empathy'",
 								type: "string",
-							},
-							MusicalAbility: {
+							}, */
+							/* MusicalAbility: {
 								description: "A measure of the characters musical abilities",
 								type: "number",
 							},
@@ -149,47 +149,47 @@ async function getCharacter(client, characterData) {
 								description:
 									"The reasoning behind choosing the value for 'lighting'",
 								type: "string",
-							},
+							},*/
 							color: {
 								description:
-									"decide the main color of this living room that you think the character would enjoy",
+									"decide the main color of this living room that you think the character would enjoy, use info from the outfit color choices to influence the design",
 								type: "string",
 							},
-							color_thoughts: {
+							/* color_thoughts: {
 								description:
 									"The reasoning behind choosing the value for 'color'",
-								type: "string",
-							},
+								type: "string", 
+							},*/
 							coffeeTable: {
 								description:
 									"A short description of a coffee table that you think the character would enjoy",
 								type: "string",
 							},
-							coffeeTable_thoughts: {
+							/* coffeeTable_thoughts: {
 								description:
 									"The reasoning behind choosing the value for 'coffeeTable'",
-								type: "string",
-							},
+								type: "string", 
+							},*/
 							wallArt: {
 								description:
 									"a decription of what should be painted in a picture frame in the living room - to the characters taste",
 								type: "string",
 							},
-							wallArt_thoughts: {
+							/* wallArt_thoughts: {
 								description:
 									"The reasoning behind choosing the value for 'wallArt'",
-								type: "string",
-							},
+								type: "string", 
+							},*/
 							floor: {
 								description:
 									"A short description of the type of floor that the character would enjoy",
 								type: "string",
 							},
-							floor_thoughts: {
+							/*  floor_thoughts: {
 								description:
 									"The reasoning behind choosing the value for 'floor'",
 								type: "string",
-							},
+							}, */
 						},
 						additionalProperties: false,
 					},

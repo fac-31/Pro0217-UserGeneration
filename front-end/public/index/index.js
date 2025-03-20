@@ -63,6 +63,15 @@ export function saveCharacter(characterData) {
 			if (ready) {
 				window.location.href = `/lounge/lounge-tale.html`; //NC- userId is passed into the url
 			}
+
+			// Store userId in localStorage
+			if (data.userId) {
+				localStorage.setItem("currentUserId", data.userId);
+				console.log("User ID stored:", data.userId);
+			}
+
+			alert("Success!");
+			window.location.href = `/lounge/lounge-tale.html`;
 		})
 
 		//NC - .catch error handling, alert message prompting user to re-enter and check info

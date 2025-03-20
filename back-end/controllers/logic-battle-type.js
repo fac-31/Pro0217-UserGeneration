@@ -14,7 +14,7 @@ async function chooseBattleType() {
 
 	console.log("Current UserId:", currentUser.userId);
 	console.log("Current Username", currentUser.name);
-    console.log("Weapon Selected:", currentUser.weapon);
+  console.log("Weapon Selected:", currentUser.weapon);
 
     let battleType;
     switch (currentUser.weapon) { 

@@ -1,4 +1,4 @@
-document
+/* document
 	.getElementById("characterForm")
 	.addEventListener("submit", function (event) {
 		event.preventDefault();
@@ -29,8 +29,21 @@ document
 			.then((response) => response.json())
 			.then((data) => {
 				console.log("backend response:", data);
+
+			// Store userId in localStorage
+			if (data.userId) {
+				localStorage.setItem("currentUserId", data.userId);
+				console.log("User ID stored:", data.userId);
+			}
+
+			console.log("localStorage before redirect:", localStorage.getItem("currentUserId"));
+
+			setTimeout(() => {
 				alert("Success!");
-				window.location.href = `/lounge/lounge.html`; //NC- userId is passed into the url
+				//window.location.href = `/lounge/lounge.html`;
+			}, 500); // Delay test to allow user id to be stored before redirect
+		
+
 			})
 
 			//NC - .catch error handling, alert message prompting user to re-enter and check info
@@ -39,3 +52,4 @@ document
 				alert("api call failed");
 			});
 	});
+ */
