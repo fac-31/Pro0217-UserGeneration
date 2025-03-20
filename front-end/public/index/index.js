@@ -16,10 +16,10 @@ const contents = [
 	content.build1,
 	content.nameContent,
 	content.build2,
-	content.hatContent,
+	//content.hatContent,
 	content.outfitContent,
-	content.bootsContent,
-	content.skinContent,
+	//content.bootsContent,
+	//content.skinContent,
 	content.bioContent,
 ];
 
@@ -44,7 +44,7 @@ export function saveCharacter(characterData) {
 			}
 			
 			alert("Success!");
-			window.location.href = `/lounge/lounge-tale.html`; //NC- userId is passed into the url
+			window.location.href = `/lounge/lounge-tale.html`; 
 		})
 
 //NC - .catch error handling, alert message prompting user to re-enter and check info

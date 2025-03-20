@@ -5,7 +5,7 @@ app.get("/generate-tale", async (req,res) => {
 	const {winner, loser, } = req.body;
 
 	try {
-		const tale = await generateBattleTale(null, winner, loser, useFakeOpenAi);
+		const tale = await generateBattleTale(null, winner, loser);
 
 		res.json({tale});
 

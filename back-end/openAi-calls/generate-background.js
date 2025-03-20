@@ -11,7 +11,7 @@ async function getBackground(data) {
 	try {
 		const response = await client.images.generate({
 			model: "dall-e-3",
-			prompt: `Draw a pixel art style living room. The room is ${data.lighting}, with comfortable ${data.color} sofas, a ${data.coffeeTable} coffee table at the center, and vibrant indoor plants adding greenery around. The walls are adorned with frames containing ${data.wallArt}. The room also has large windows that allow plenty of natural light to pass through. The curtains are ${data.color}. The ${data.floor} floor adds to aesthetic of the room.`,
+			prompt: `Draw a pixel art style living room in a classic 16-bit video game look. Use bright colors and playful details. The room is ${data.lighting}, with comfortable ${data.color} sofas, and a ${data.coffeeTable} coffee table at the center. Add vibrant indoor plants for greenery around the room. The walls should be decorated with frames containing ${data.wallArt}. Include large windows that let natural light flood the space. The curtains are ${data.color}, and the ${data.floor} floor enhances the room's aesthetic.`,
 			n: 1, //JM number of images created
 			size: "1024x1024", //JM note to make this dynamic for screen size? (or modify from css?)
 		});

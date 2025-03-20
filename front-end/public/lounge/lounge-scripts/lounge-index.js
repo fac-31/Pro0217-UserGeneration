@@ -3,7 +3,7 @@ import BuildCharacter from "./lounge-display-character.js";
 import displayImage from "./lounge-fetch-background.js";
 import { triggerBattle, formatBattleData } from "./lounge-weapon-update.js";
 
-import { intruderAlert, pickWeapon} from "./lounge-content.js";
+import { content } from "./lounge-content.js";
 import formatEvents from "../../index/format-events.js";
 import { winnerlosercheck } from "./lounge-winner-loser-check.js";
 

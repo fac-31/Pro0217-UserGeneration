@@ -63,7 +63,7 @@ export const content = {
 		delay: 60,
 		timeout: 1000,
 	},
-
+/* 
 	hatContent: {
 		string: "~What color hat would you like?",
 		key: "hat",
@@ -91,38 +91,38 @@ export const content = {
 			},
 		],
 	},
-
+ */
 	outfitContent: {
-		string: "~And what color outfit would you like?",
+		string: "~Pick a combination of colors!~",
 		key: "outfit",
 		type: "select",
 		pause: [1000],
 		delay: 40,
 		events: [
 			{
-				id: "red",
-				content: "Red",
+				id: "Red&Green",
+				content: "Red & Green",
 				event: "click",
 				handler: "",
 			},
 			{
-				id: "green",
-				content: "Green",
+				id: "Blue&Yellow",
+				content: "Blue & Yellow",
 				event: "click",
 				handler: "",
 			},
 			{
-				id: "blue",
-				content: "Blue",
+				id: "Beige&Blue",
+				content: "Beige & Blue",
 				event: "click",
 				handler: "",
 			},
 		],
 	},
 
-	bootsContent: {
+/* 	bootsContent: {
 		string:
-			"~... Wer'e definitely going to need shoes with this!~ What color boots would you like?",
+			"~... We're definitely going to need shoes with this!~ What color boots would you like?",
 		key: "boots",
 		type: "select",
 		pause: [1000, 500],
@@ -147,9 +147,9 @@ export const content = {
 				handler: "",
 			},
 		],
-	},
+	}, */
 
-	skinContent: {
+	/* skinContent: {
 		string: "~What color skin would you like?",
 		key: "skin",
 		type: "select",
@@ -175,7 +175,7 @@ export const content = {
 				handler: "",
 			},
 		],
-	},
+	}, */
 
 	bioContent: {
 		string: "~Tell me a bit about yourself",
