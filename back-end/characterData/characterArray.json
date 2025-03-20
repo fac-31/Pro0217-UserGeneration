@@ -2052,5 +2052,43 @@
     "userId": 2541,
     "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-nYbqgo3O0LNnYYAoKAmApBfx/user-nWoSrXrDPHnWVploEeO1G4R9/img-j0nXwyio5Tn2bgbcE4osOpxw.png?st=2025-03-20T14%3A57%3A51Z&se=2025-03-20T16%3A57%3A51Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-20T13%3A37%3A40Z&ske=2025-03-21T13%3A37%3A40Z&sks=b&skv=2024-08-04&sig=AxaBb98Rb1v0neXT94gCzE59JR5kruEBxlbPyJ5r/0k%3D",
     "weapon": "DogTreatCatapult"
+  },
+  {
+    "name": "doom guy",
+    "outfit": "Red&Green",
+    "biography": "I am the doom guy. I have survived the depths of hell and have come back with super human strength. my living room has to be huge in order to display all the demons i have killed on the walls. my favourite flowers are roses so my room should be full of them!",
+    "Strength": 10,
+    "Dexterity": 9,
+    "Constitution": 10,
+    "Intelligence": 5,
+    "Wisdom": 6,
+    "Charisma": 3,
+    "Empathy": 2,
+    "color": "dark red",
+    "coffeeTable": "A rugged, industrial-style metal coffee table with a glass top and storage underneath for displaying small demon skulls or trophies.",
+    "wallArt": "A large, intense painting of a battle scene from hell, capturing the chaos of demons against a dark, fiery backdrop.",
+    "floor": "A dark, stone-like floor, possibly with a slate finish for a rugged, durable look that complements the theme of a battle-hardened warrior.",
+    "userId": 1945,
+    "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-nYbqgo3O0LNnYYAoKAmApBfx/user-nWoSrXrDPHnWVploEeO1G4R9/img-zTQUTgHyzT5gAzo03H8tSryg.png?st=2025-03-20T15%3A23%3A13Z&se=2025-03-20T17%3A23%3A13Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-19T17%3A54%3A00Z&ske=2025-03-20T17%3A54%3A00Z&sks=b&skv=2024-08-04&sig=T/LODXU8dJ64OKEUJQObBa7qRKlLamffBOclZP3J2PE%3D",
+    "weapon": "DogTreatCatapult"
+  },
+  {
+    "name": "jeremiah",
+    "outfit": "Blue&Yellow",
+    "biography": "I am a retired gardener, i want a huge living room full of lily's. more llilys make me happier. i want the worst stats possible so i lose the battle",
+    "Strength": 3,
+    "Dexterity": 2,
+    "Constitution": 2,
+    "Intelligence": 5,
+    "Wisdom": 7,
+    "Charisma": 4,
+    "Empathy": 6,
+    "color": "green",
+    "coffeeTable": "A simple wooden coffee table with a glass top and decorative carvings of lilies around the edges.",
+    "wallArt": "A large landscape painting of a vibrant garden full of colorful lilies, capturing different stages of bloom.",
+    "floor": "Natural wood flooring with a slight glossy finish to bring a touch of warmth.",
+    "userId": 1892,
+    "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-nYbqgo3O0LNnYYAoKAmApBfx/user-nWoSrXrDPHnWVploEeO1G4R9/img-rHSPHeYc8w3YrUFFXvDLUaEe.png?st=2025-03-20T15%3A32%3A44Z&se=2025-03-20T17%3A32%3A44Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-19T18%3A21%3A08Z&ske=2025-03-20T18%3A21%3A08Z&sks=b&skv=2024-08-04&sig=fW1GXOtB/Pq/ltb4iol2gxT%2BnNSIy/aXJva0NXnzhg0%3D",
+    "weapon": "DogTreatCatapult"
   }
 ]
