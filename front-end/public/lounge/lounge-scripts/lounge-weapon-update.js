@@ -1,3 +1,5 @@
+import { winnerlosercheck } from './lounge-winner-loser-check.js';
+
 export async function triggerBattle(weaponId) {
 	try {
 		// NC - weapon choice is extracted and sent to the backend
@@ -36,12 +38,10 @@ export async function triggerBattle(weaponId) {
 		const battleData = await battleResponse.json();
 		const { winner, loser } = battleData;
 		console.log("battle data:", battleData);
+		console.log("check for loser userId:", battleData.loser.userId);
+	
+		return battleData; 
 
-		return battleData;
-		// NC - Display the battle result
-		// document.getElementById(
-		// 	"result"
-		// ).textContent = `Weapon saved! - Battle Result: Winner is ${winner.name}, Loser is ${loser.name}`;
 	} catch (error) {
 		console.error("Error:", error);
 		document.getElementById("result").textContent =
@@ -60,10 +60,12 @@ export function formatBattleData(battleData) {
 			events: [
 				{
 					id: "endButton",
-					content: "What do we do now?",
+					content: "What happens next?", 
 					event: "click",
 					handler: "",
-					eventCall: "callBack()",
+					onClick: () => { 
+						winnerlosercheck(battleData.loser); 
+					},
 				},
 			],
 		},

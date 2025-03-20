@@ -37,7 +37,7 @@ exports.runBattleAndGenerateStory = async (req, res) => {
         const battleStory = await generateBattleTale(winner, loser, battleType);
 
 //NC - Story sent to front end
-        res.json({ battleStory });
+        res.json({ battleStory, winner, loser });
 
     } catch (error) {
         console.error("Error generating story:", error);

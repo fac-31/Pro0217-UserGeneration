@@ -62,7 +62,9 @@ exports.saveCharacter = async (req, res) => {
 
 		res.json({
 			message: "At saveCharacter: Ingredients in the fridge",
+			userId: fullCharacterData.userId
 		});
+
 	} catch (error) {
 		console.error("At saveCharacter: Error saving character data:", error);
 	}

@@ -26,21 +26,28 @@ const contents = [
 formatEvents(contents, characterData, saveCharacter);
 
 export function saveCharacter(characterData) {
-	//NC - convert javascript object into JSON and send to backend
+//NC - convert javascript object into JSON and send to backend
 	fetch("/characters", {  //http://localhost:3000/characters
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(characterData),
 	})
-		//NC - .then is required as sequence of parsing info and redirection etc is important
+//NC - .then is required as sequence of parsing info and redirection etc is important
 		.then((response) => response.json())
 		.then((data) => {
 			console.log("backend response:", data);
+
+// Store userId in localStorage
+			if (data.userId) {
+				localStorage.setItem("currentUserId", data.userId);
+				console.log("User ID stored:", data.userId);
+			}
+			
 			alert("Success!");
 			window.location.href = `/lounge/lounge-tale.html`; //NC- userId is passed into the url
 		})
 
-		//NC - .catch error handling, alert message prompting user to re-enter and check info
+//NC - .catch error handling, alert message prompting user to re-enter and check info
 		.catch((error) => {
 			console.error("Error sending data to backend:", error);
 			alert("api call failed");

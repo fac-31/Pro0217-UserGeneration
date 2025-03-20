@@ -62,6 +62,7 @@ async function battle() {
             return {
                 winner: {
                     name: winner.name,
+                    userId: winner.userId,
                     weapon: winner.weapon,
                     empathy: winner.Empathy,
                     biography: winner.biography,
@@ -69,6 +70,7 @@ async function battle() {
                 },
                 loser: {
                     name: loser.name,
+                    userId: loser.userId,
                     weapon: loser.weapon,
                     empathy: loser.Empathy,
                     biography: loser.biography,
