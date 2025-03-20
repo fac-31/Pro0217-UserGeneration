@@ -6,11 +6,11 @@ const folderPath = () => {
 };
 
 exports.runDeleteCharacter = async (req, res) => {
-  console.log("Deleting loser function started");
+  console.log("deleting loser function started");
 
   try {
     const filePath = folderPath();
-    const loserId = req.params.id;
+    const loserId = req.params.userId;
 
     fs.readFile(filePath, "utf8", (err, data) => {
       if (err) {

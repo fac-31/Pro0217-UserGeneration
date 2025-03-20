@@ -17,7 +17,7 @@ router.get("/start-battle", (req, res, next) => {
     next();
 }, controllersStartBattle.runBattleAndGenerateStory);
 
-router.delete("/delete-character", (req, res, next) => {
+router.delete("/delete-character/:userId", (req, res, next) => {
     console.log("calling /delete-character endpoint");
   next();
 }, controllersDeleteCharacter.runDeleteCharacter);

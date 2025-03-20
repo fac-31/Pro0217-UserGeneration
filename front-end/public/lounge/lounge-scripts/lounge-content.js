@@ -47,9 +47,3 @@ export const pickWeapon = {
 	],
 };
 
-export const returntocreate = {
-	string: "~I think you dead..............~ So......~Let's build you another character!",
-	key:"returntocreate",
-	type:"select"
-
-}

@@ -62,7 +62,8 @@ export function formatBattleData(battleData) {
 					id: "endButton",
 					content: "What happens next?", 
 					event: "click",
-					handler: () => { 
+					handler: "",
+					onClick: () => { 
 						winnerlosercheck(battleData.loser); 
 					},
 				},

@@ -199,21 +199,4 @@ export const content = {
 		events: "keydown",
 	},
 
-	youDead: {
-		string:
-			"~I think you dead..............~ So......~Let's build you another character!",
-			type: "select",
-			pause: [1000, 500],
-			delay: 40,
-			events: [
-				{
-					id: "returntocreate",
-					content: "Create!",
-					event: "click",
-					handler: "",
-				},
-			],
-	},
-
-
 };

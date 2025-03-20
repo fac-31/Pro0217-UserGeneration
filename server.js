@@ -52,6 +52,10 @@ app.get("/create.html", (req, res) => {
 app.get("/lounge-tale.html", (req, res) => {
 	res.sendFile(__dirname + "/front-end/public/lounge/lounge-tale.html");
 });
+//deathpage route
+app.get("/death.html", (req, res) => {
+	res.sendFile(__dirname + "/front-end/public/death/death.html");
+});
 
 // Route for character and weapon data
 app.use(router);

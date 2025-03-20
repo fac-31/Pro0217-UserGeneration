@@ -5,7 +5,7 @@ export async function winnerlosercheck(loser) {
     console.log("winner/loser function started");
     console.log("Loser data received:", loser.userId);
 
-    // Ensure the button exists before attaching event listener
+// Ensure the button exists before attaching event listener
     const endButton = document.getElementById("endButton");
 
     if (!endButton) {
@@ -13,30 +13,28 @@ export async function winnerlosercheck(loser) {
         console.log("button not on page yet")
         return; 
     }
-
-    // Add the event listener only once
     endButton.addEventListener("click", async () => {
         const currentUserId = localStorage.getItem("currentUserId");
         console.log("Current userId within localStorage:", currentUserId);
 
-        // Ensure currentUserId is valid
+//Ensure currentUserId is valid
         if (!currentUserId) {
             console.error("Current userId not found in localStorage.");
             return;
         }
 
-        // If the loser userId matches the local storage current user's ID, redirect to result-loser.html
+//If the loser userId matches the local storage current user's ID, redirect to result-loser.html
         if (currentUserId === String(loser.userId)) {
             console.log("Current user is the loser");
 
             try {
-                // Show loading or feedback
+//alert to ensure user knows character is being deleted
                 alert("You lost! Deleting your character...");
 
                 const deleteUser = await deleteCharacter(loser.userId);
                 if (deleteUser) {
                     console.log("You are the loser. Redirecting to result-loser.html...");
-                    window.location.href = "/front-end/public/death/death.html";
+                    window.location.href = "/death.html";
                 }
             } catch (error) {
                 console.error("Error deleting character:", error);
