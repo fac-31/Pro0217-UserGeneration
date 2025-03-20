@@ -199,8 +199,41 @@ export const content = {
 		events: "keydown",
 	},
 
-	loading: {
-		string: `Lorem ipsum dolor sit amet consectetur `,
+	loading1: {
+		string: `~So... anyone here ever try to race a snail? It’s like, whoa, slow down, buddy, this is my thing`,
+		loading: true,
+		type: "read",
+		pause: [1000],
+		delay: 60,
+		timeout: 1000,
+	},
+
+	loading2: {
+		string: `~If you need a coaster, I can just, you know, lie here. I’m basically a walking coffee table `,
+		loading: true,
+		type: "read",
+		pause: [1000],
+		delay: 60,
+		timeout: 1000,
+	},
+	loading3: {
+		string: `~Anyone want to help me with my speed workout? It’s mostly... standing up... and then reconsidering. `,
+		loading: true,
+		type: "read",
+		pause: [1000],
+		delay: 60,
+		timeout: 1000,
+	},
+	loading4: {
+		string: `~I’d offer snacks, but all I’ve got is lettuce. And like, the enthusiasm to hand you lettuce `,
+		loading: true,
+		type: "read",
+		pause: [1000],
+		delay: 60,
+		timeout: 1000,
+	},
+	loading5: {
+		string: `~I was going to organize a scavenger hunt, but then I remembered I’d have to move... so... yeah `,
 		loading: true,
 		type: "read",
 		pause: [1000],
@@ -208,3 +241,8 @@ export const content = {
 		timeout: 1000,
 	},
 };
+
+//“If you’re bored, feel free to read me a story. Extra points if it’s about a tortoise winning some kind of race.”
+//“Anyone else ever forget why they started moving somewhere... and then just give up and call it a nap?”
+//“I could show you my dance moves, but they mostly look like... standing in place. With intention.”
+//“Oh, you’re all standing? Pff, overachievers.”

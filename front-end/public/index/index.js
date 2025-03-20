@@ -13,23 +13,22 @@ const contents = [
 	//content.intro2,
 	//content.intro3,
 	//content.introContent,
-	content.build1,
-	content.nameContent,
+	// content.build1,
+	// content.nameContent,
 	//content.build2,
-	content.hatContent,
-	content.outfitContent,
-	content.bootsContent,
-	content.skinContent,
+	// content.hatContent,
+	// content.outfitContent,
+	// content.bootsContent,
+	// content.skinContent,
 	content.bioContent,
 ];
 
 const loadingContent = [
-	content.loading,
-	content.loading,
-	// content.loading,
-	// content.loading,
-	// content.loading,
-	// content.loading,
+	content.loading1,
+	content.loading2,
+	content.loading3,
+	content.loading4,
+	content.loading5,
 ];
 
 formatEvents(contents, characterData, callLoading, setReady);
@@ -40,7 +39,7 @@ function setReady(state) {
 }
 
 function callLoading(characterData) {
-	console.log("calling loading", loadingContent);
+	console.log("1: calling loading", loadingContent);
 	formatEvents(loadingContent, "", callLoading, setReady);
 
 	if (characterData.ready) {
