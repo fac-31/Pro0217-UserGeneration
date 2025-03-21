@@ -34,7 +34,7 @@ export async function winnerlosercheck(loser) {
                 const deleteUser = await deleteCharacter(loser.userId);
                 if (deleteUser) {
                     console.log("You are the loser. Redirecting to result-loser.html...");
-                    window.location.href = "/death.html";
+                    window.location.href = "/death/death.html";
                 }
             } catch (error) {
                 console.error("Error deleting character:", error);
@@ -44,7 +44,7 @@ export async function winnerlosercheck(loser) {
             console.log("You are the winner. Stay on page.");
             alert("You defended your living room!");
 
-            const mainContent = document.getElementById("mainContent");
+            const mainContent = document.getElementById("loungeContainer");
 
             if (mainContent) {
                 const gif = document.createElement("img");
