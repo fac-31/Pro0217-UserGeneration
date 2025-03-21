@@ -1,6 +1,8 @@
 import { content } from "./content.js";
 import formatEvents from "./format-events.js";
 
+import fetchData from "../lounge/lounge-scripts/lounge-fetch-character.js";
+
 //JM displays Tortoise background
 const mainContent = document.getElementById("mainContent");
 mainContent.style.backgroundImage = "url(../index/tortoise-livingroom.png)";
@@ -28,6 +30,11 @@ const loadingContent = [
 	content.loading2,
 	content.loading3,
 	content.loading4,
+	content.loading5,
+	content.loading5,
+	content.loading5,
+	content.loading5,
+	content.loading5,
 	content.loading5,
 ];
 
@@ -60,9 +67,6 @@ export function saveCharacter(characterData) {
 		.then((response) => response.json())
 		.then((data) => {
 			console.log("backend response:", data);
-			if (ready) {
-				window.location.href = `/lounge/lounge-tale.html`; //NC- userId is passed into the url
-			}
 
 			// Store userId in localStorage
 			if (data.userId) {
@@ -70,8 +74,13 @@ export function saveCharacter(characterData) {
 				console.log("User ID stored:", data.userId);
 			}
 
-			alert("Success!");
-			window.location.href = `/lounge/lounge-tale.html`;
+			fetchData();
+
+			const container = document.getElementById("container");
+			container.classList.add("fade-out");
+			setTimeout(() => {
+				window.location.href = `/lounge/lounge-tale.html`;
+			}, 2000);
 		})
 
 		//NC - .catch error handling, alert message prompting user to re-enter and check info

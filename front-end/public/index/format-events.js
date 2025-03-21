@@ -8,13 +8,13 @@ export default function formatEvents(contents, data, callBack, callBack2) {
 	let i = 0;
 	wrapper(contents, data, callBack);
 	function wrapper(contents, data, callBack) {
-		console.log("first line", i);
+		//console.log("first line", i);
 		function callNextMessage() {
 			setStop(true);
 			callBack2(false);
 
 			if (contents[i].timeout) {
-				console.log(contents);
+				//console.log(contents);
 				i++;
 				setTimeout(() => {
 					setStop(false);
