@@ -19,6 +19,7 @@ a {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	transition: all 2000ms ease;
 }
 
 .main-content-container {
@@ -98,4 +99,12 @@ button:hover {
 
 .hidden {
 	display: none;
+}
+
+.fade-out {
+	opacity: 0;
+}
+
+.fade-in {
+	opacity: 1;
 }

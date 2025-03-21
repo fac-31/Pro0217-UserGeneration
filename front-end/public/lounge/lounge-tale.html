@@ -7,19 +7,21 @@
 		<title>Living Room</title>
 	</head>
 	<body>
-		<div class="container">
+		<div class="container fade-out" id="loungeContainer">
 			<div class="main-content-container">
 				<canvas id="characterCanvas" class="character-canvas"></canvas>
 				<img src="../index/tortoise1.png" id="wizard1" class="hidden" />
 				<img src="../index/tortoise2.png" id="wizard2" class="hidden" />
-				<div class="main-content" id="mainContent"></div>
+				<div class="main-content" id="loungeMainContent"></div>
 				<canvas id="intruderCanvas" class="intruder-canvas"></canvas>
 			</div>
 			<div class="footer">
 				<div class="story-container" id="storyContainer"></div>
 			</div>
 		</div>
+		<script
+			type="module"
+			src="./lounge-scripts/lounge-fetch-background.js"></script>
 		<script type="module" src="./lounge-scripts/lounge-index.js"></script>
-
 	</body>
 </html>

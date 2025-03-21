@@ -1,21 +1,11 @@
 import fetchData from "./lounge-fetch-character.js";
 import BuildCharacter from "./lounge-display-character.js";
-import displayImage from "./lounge-fetch-background.js";
+//import displayImage from "./lounge-fetch-background.js";
 import { triggerBattle, formatBattleData } from "./lounge-weapon-update.js";
 
 import { content } from "./lounge-content.js";
 import formatEvents from "../../index/format-events.js";
 import { winnerlosercheck } from "./lounge-winner-loser-check.js";
-
-async function callFunctions() {
-	await fetchData().then((res) => {
-		console.log(res);
-		displayImage(res.url);
-		let user = new BuildCharacter("characterCanvas", res);
-		user.draw();
-	});
-}
-callFunctions();
 
 const contents = [
 	content.loungeIntro1,
@@ -23,7 +13,31 @@ const contents = [
 	content.pickWeapon,
 ];
 const weaponData = {};
-formatEvents(contents, weaponData, displayBattle);
+
+async function callFunctions() {
+	await fetchData().then((res) => {
+		const background = document.getElementById("loungeMainContent");
+		const img = new Image();
+		img.src = res.url;
+		background.style.backgroundImage = `url(${res.url})`;
+
+		img.onload = () => {
+			let user = new BuildCharacter("characterCanvas", res);
+			user.draw();
+
+			const loungeContainer = document.getElementById("loungeContainer");
+			loungeContainer.classList.add("fade-in");
+			setTimeout(() => {
+				formatEvents(contents, weaponData, displayBattle, dummyFunction);
+			}, 2000);
+		};
+	});
+}
+callFunctions();
+
+function dummyFunction(something) {
+	something = something;
+}
 
 async function displayBattle(data) {
 	console.log(data);
@@ -31,11 +45,11 @@ async function displayBattle(data) {
 	const battleData = await triggerBattle(data.weapon);
 	const battleContent = formatBattleData(battleData);
 	if (battleContent) {
-		formatEvents(battleContent, "",() => end(battleData.loser));
+		formatEvents(battleContent, "", () => end(battleData.loser));
 	}
 }
 
-function end (loser) {
+function end(loser) {
 	console.log("processing loser information:", loser);
 	winnerlosercheck(loser);
 }

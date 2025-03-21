@@ -52,6 +52,7 @@ export async function triggerBattle(weaponId) {
 export function formatBattleData(battleData) {
 	const battleContent = [
 		{
+			lounge: true,
 			string: battleData.battleStory,
 			type: "select",
 			pause: [],
