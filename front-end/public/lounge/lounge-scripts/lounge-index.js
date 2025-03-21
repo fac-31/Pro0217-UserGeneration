@@ -17,17 +17,20 @@ const weaponData = {};
 async function callFunctions() {
 	await fetchData().then((res) => {
 		const background = document.getElementById("loungeMainContent");
+		const img = new Image();
+		img.src = res.url;
 		background.style.backgroundImage = `url(${res.url})`;
 
-		let user = new BuildCharacter("characterCanvas", res);
-		user.draw();
-		setTimeout(() => {
+		img.onload = () => {
+			let user = new BuildCharacter("characterCanvas", res);
+			user.draw();
+
 			const loungeContainer = document.getElementById("loungeContainer");
 			loungeContainer.classList.add("fade-in");
 			setTimeout(() => {
 				formatEvents(contents, weaponData, displayBattle, dummyFunction);
 			}, 2000);
-		}, 2000);
+		};
 	});
 }
 callFunctions();

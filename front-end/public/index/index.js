@@ -11,17 +11,11 @@ mainContent.style.backgroundImage = "url(../index/tortoise-livingroom.png)";
 const characterData = { ready: true };
 
 const contents = [
-	//content.intro1,
-	//content.intro2,
-	//content.intro3,
-	//content.introContent,
-	// content.build1,
-	// content.nameContent,
-	//content.build2,
-	// content.hatContent,
-	// content.outfitContent,
-	// content.bootsContent,
-	// content.skinContent,
+	content.intro1,
+	content.intro2,
+	content.intro3,
+	content.nameContent,
+	content.outfitContent,
 	content.bioContent,
 ];
 
@@ -31,11 +25,7 @@ const loadingContent = [
 	content.loading3,
 	content.loading4,
 	content.loading5,
-	content.loading5,
-	content.loading5,
-	content.loading5,
-	content.loading5,
-	content.loading5,
+	content.loading6,
 ];
 
 formatEvents(contents, characterData, callLoading, setReady);
