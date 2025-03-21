@@ -1,5 +1,5 @@
 import { content } from "./content.js";
-import formatEvents from "./format-events.js";
+import formatEvents from "../index/format-events.js";
 
 import fetchData from "../lounge/lounge-scripts/lounge-fetch-character.js";
 

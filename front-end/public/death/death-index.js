@@ -1,11 +1,16 @@
 import { deathcontent } from "./death-content.js";
-import formatEvents from "../../index/format-events.js";
+import formatEvents from "../index/format-events.js";
 
-const mainContent = document.getElementById("mainContent");
-mainContent.style.backgroundImage = "url('/death/ghostTortoise.png')";
+const container = document.getElementById("deathContainer");
+container.classList.add("fade-in");
+
+const mainContent = document.getElementById("deathMainContent");
+mainContent.style.backgroundImage = "url(../death/ghostTortoise.png)";
 
 const contents = [deathcontent.youDead];
 
-formatEvents(contents, {}, () => {
-	console.log("Event sequence completed.");
-});
+formatEvents(contents, {}, logEnd, logEnd);
+
+function logEnd() {
+	console.log("end of death");
+}

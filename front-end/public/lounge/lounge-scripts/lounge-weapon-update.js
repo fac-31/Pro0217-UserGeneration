@@ -1,11 +1,11 @@
-import { winnerlosercheck } from './lounge-winner-loser-check.js';
+import { winnerlosercheck } from "./lounge-winner-loser-check.js";
 
 export async function triggerBattle(weaponId) {
 	try {
+		console.log("save weapon triggered");
+
 		// NC - weapon choice is extracted and sent to the backend
 		const selectedWeapon = weaponId;
-		// NC - Send the weapon to the backend
-		console.log("save weapon triggered");
 		const response = await fetch("/save-weapon", {
 			method: "POST",
 			headers: {
@@ -16,32 +16,27 @@ export async function triggerBattle(weaponId) {
 
 		// Check if the response was successful
 		if (!response.ok) {
-			throw new Error("Failed to save the weapon");
+			throw new Error("At triggerBattle(): Failed to save the weapon");
+		} else {
+			console.log(`Weapon "${selectedWeapon}" has been successfully saved!`);
+
+			// Trigger the battle logic right after the weapon has been saved
+			console.log("At triggerBattle(): Retrieving battle data");
+			const battleResponse = await fetch("/start-battle", {
+				method: "GET",
+			});
+
+			// Check if the battle response is successful
+			if (!battleResponse.ok) {
+				throw new Error("At trigger Battle(): Battle logic failed.");
+			} else {
+				const battleData = await battleResponse.json();
+				console.log("battle data:", battleData);
+				console.log("loser userId:", battleData.loser.userId);
+
+				return battleData;
+			}
 		}
-
-		const data = await response.json(); // Get the response body as JSON
-
-		// Log to console that the weapon was successfully saved
-		console.log(`Weapon "${selectedWeapon}" has been successfully saved!`);
-
-		// Trigger the battle logic right after the weapon has been saved
-		console.log("battle triggered");
-		const battleResponse = await fetch("/start-battle", {
-			method: "GET",
-		});
-
-		// Check if the battle response is successful
-		if (!battleResponse.ok) {
-			throw new Error("Battle logic failed.");
-		}
-
-		const battleData = await battleResponse.json();
-		const { winner, loser } = battleData;
-		console.log("battle data:", battleData);
-		console.log("check for loser userId:", battleData.loser.userId);
-	
-		return battleData; 
-
 	} catch (error) {
 		console.error("Error:", error);
 		document.getElementById("result").textContent =
@@ -61,11 +56,11 @@ export function formatBattleData(battleData) {
 			events: [
 				{
 					id: "endButton",
-					content: "What happens next?", 
+					content: "Next",
 					event: "click",
 					handler: "",
-					onClick: () => { 
-						winnerlosercheck(battleData.loser); 
+					onClick: () => {
+						winnerlosercheck(battleData.loser);
 					},
 				},
 			],

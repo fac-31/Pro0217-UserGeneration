@@ -1,6 +1,5 @@
 import formatHtml from "./format-html.js";
 import { animate, setStop } from "./animate.js";
-import { content } from "./content.js";
 
 //JM creates event listeners for the array of content
 animate();
