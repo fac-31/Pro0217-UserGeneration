@@ -10,14 +10,14 @@ export default function formatEvents(contents, data, callBack, callBack2) {
 		//console.log("first line", i);
 		function callNextMessage() {
 			setStop(true);
-			callBack2(false);
+			if (callBack2) callBack2(false);
 
 			if (contents[i].timeout) {
 				//console.log(contents);
 				i++;
 				setTimeout(() => {
 					setStop(false);
-					callBack2(true);
+					if (callBack2) callBack2(true);
 				}, contents[i].timeout);
 
 				wrapper(contents, data, callBack);
@@ -27,7 +27,7 @@ export default function formatEvents(contents, data, callBack, callBack2) {
 			//console.log(contents[i].loading);
 			setTimeout(() => {
 				setStop(false);
-				callBack2(true);
+				if (callBack2) callBack2(true);
 			}, contents[i].pause[0]);
 
 			formatHtml(contents[i], callNextMessage);

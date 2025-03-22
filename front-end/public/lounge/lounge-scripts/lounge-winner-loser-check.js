@@ -1,4 +1,8 @@
+import formatEvents from "../../index/format-events.js";
 import { deleteCharacter } from "./lounge-delete-user.js";
+import { content } from "./lounge-content.js";
+
+const winnerContent = [content.winnerMessage];
 
 // Winner loser check added
 export async function winnerlosercheck(loser) {
@@ -34,7 +38,7 @@ export async function winnerlosercheck(loser) {
 
 				//fade oute lounge and redirect to death page
 				const container = document.getElementById("loungeContainer");
-				container.classList.add("fade-out");
+				container.classList.remove("fade-in");
 				setTimeout(() => {
 					window.location.href = "/death/death.html";
 				}, 2000);
@@ -45,7 +49,9 @@ export async function winnerlosercheck(loser) {
 		}
 	} else {
 		console.log("You are the winner. Stay on page.");
-		alert("you won");
+
+		console.log("Winner content:", winnerContent);
+		formatEvents(winnerContent);
 		//call format events here to display winner content
 
 		const mainContent = document.getElementById("loungeContainer");
