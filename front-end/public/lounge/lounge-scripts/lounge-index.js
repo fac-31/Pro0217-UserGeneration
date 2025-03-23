@@ -45,7 +45,7 @@ async function displayBattle(data) {
 	const battleData = await triggerBattle(data.weapon);
 	const battleContent = formatBattleData(battleData);
 	if (battleContent) {
-		formatEvents(battleContent, "", () => end(battleData.loser));
+		formatEvents(battleContent, "", () => end(battleData.loser), dummyFunction);
 	}
 }
 

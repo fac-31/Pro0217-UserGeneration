@@ -7,20 +7,20 @@
 		<title>The living room disappears....</title>
 	</head>
 	<body>
+		<div class="container fade-out" id="deathContainer">
+			<div class="main-content-container">
+				<canvas id="characterCanvas" class="character-canvas"></canvas>
+				<img src="../index/tortoise1.png" id="wizard1" class="hidden" />
+				<img src="../index/tortoise2.png" id="wizard2" class="hidden" />
+				<div class="main-content" id="deathMainContent"></div>
+				<canvas id="intruderCanvas" class="intruder-canvas"></canvas>
+			</div>
 
-		<div class="main-content-container">
-			<canvas id="characterCanvas" class="character-canvas"></canvas>
-			<img src="../index/tortoise1.png" id="wizard1" class="hidden" />
-			<img src="../index/tortoise2.png" id="wizard2" class="hidden" />
-			<div class="main-content" id="mainContent"></div>
+			<div class="footer">
+				<div class="story-container" id="storyContainer"></div>
+			</div>
 		</div>
 
-<div class="footer">
-	<div class="story-container" id="storyContainer"></div>
-</div>
-
-
-<script type="module" src="./death-index.js"></script>
-
+		<script type="module" src="./death-index.js"></script>
 	</body>
 </html>
