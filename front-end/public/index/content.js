@@ -10,7 +10,7 @@ export const content = {
 
 	intro2: {
 		string:
-			"~I Hear you're looking for somewhere to live.~ I can help you with that.",
+			"~I hear you're looking for somewhere to live.~ I can help you with that.",
 		type: "read",
 		pause: [1000, 1000],
 		delay: 60,
@@ -19,7 +19,7 @@ export const content = {
 
 	intro3: {
 		string:
-			"~I'll Have to get to know you a bit first of course.~ I don't want to build you just any old living room",
+			"~I'll have to get to know you a bit first of course.~ I don't want to build you just any old living room",
 		type: "read",
 		pause: [1000, 1000],
 		delay: 60,
@@ -77,7 +77,7 @@ export const content = {
 	},
 
 	loading1: {
-		string: `~Great!~ I'll get started on your living room right away! In the meatime...~ erh...`,
+		string: `~Great!~ I'll get started on your living room right away! In the meantime...~ erh...`,
 		loading: true,
 		type: "read",
 		pause: [1000, 1500, 2000],
