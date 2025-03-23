@@ -49,5 +49,20 @@ export const content = {
 			},
 		],
 	},
-};
 
+	winnerMessage: {
+		string:
+			"~You won!~ You successfully defended your living room!~ Stay here as long as you like, or create another character.",
+		type: "select",
+		pause: [2000, 1000, 1000],
+		delay: 40,
+		events: [
+			{
+				id: "backToHome",
+				content: "Create another character",
+				event: "click",
+				handler: "window.location.href='/'",
+			},
+		],
+	},
+};
