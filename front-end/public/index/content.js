@@ -55,10 +55,11 @@ export const content = {
 	},
 
 	bioContent: {
-		string: "~Tell me a bit about yourself",
+		string:
+			"~Tell me a bit more about what you're looking for.~ What kind of plants do you like?~ What vibe are you going for?~ Gimme some details.~ And a bit about you, what do you like doing?",
 		key: "biography",
 		type: "text",
-		pause: [1000],
+		pause: [1000, 500, 500, 500, 500],
 		delay: 40,
 		id: "biography",
 		inputId: "bioValue",

@@ -1,130 +1,134 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
 :root {
-  --primary-color: rgb(0, 0, 0);
-  --primary-fade: rgb(0, 0, 0);
+	--primary-color: rgb(0, 0, 0);
+	--primary-fade: rgb(0, 0, 0);
 }
 
 body {
-  background-color: var(--primary-color);
-  max-height: 98vh;
-  font-family: "Press Start 2P", cursive;
+	background-color: var(--primary-color);
+	max-height: 98vh;
+	font-family: "Press Start 2P", cursive;
 }
 
 a {
-  color: transparent;
-  position: absolute;
+	color: transparent;
+	position: absolute;
 }
 
 .container {
-  max-height: 94vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  transition: all 2000ms ease;
+	max-height: 94vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	transition: all 2000ms ease;
 
-  border-left: 3.5px solid #93c572;
-  border-right: 3.5px solid #93c572;
-  border-top-left-radius: 35px;
-  border-top-right-radius: 35px;
-  border-bottom-left-radius: 35px;
-  border-bottom-right-radius: 35px;
+	border-left: 3.5px solid #93c572;
+	border-right: 3.5px solid #93c572;
+	border-top-left-radius: 35px;
+	border-top-right-radius: 35px;
+	border-bottom-left-radius: 35px;
+	border-bottom-right-radius: 35px;
 
-  padding: 10px;
-  margin: 20px;
+	padding: 10px;
+	margin: 20px;
 }
 
 .main-content-container {
-  flex-grow: 1;
-  min-height: 10vh;
+	flex-grow: 1;
+	min-height: 10vh;
 
-  display: flex;
-  position: relative;
-  justify-content: space-around;
-  align-items: flex-end;
-  margin-bottom: 10px;
-  padding: 10px;
-  margin: 20px;
+	display: flex;
+	position: relative;
+	justify-content: space-around;
+	align-items: flex-end;
+	margin-bottom: 10px;
+	padding: 10px;
+	margin: 20px;
 }
 .character-canvas,
 .intruder-canvas {
-  border: solid 2px transparent;
-  width: 18vw;
-  aspect-ratio: 2 / 3;
+	border: solid 2px transparent;
+	width: 18vw;
+	aspect-ratio: 2 / 3;
 }
 
 .main-content {
-  width: 90vw;
-  max-width: 1792px;
-  height: 50vh;
-  margin-bottom: 10px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+	width: 90vw;
+	max-width: 1792px;
+	height: 50vh;
+	margin-bottom: 10px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
 }
 
 .footer {
 }
 
 .story-container {
-  min-height: 28vh;
+	min-height: 28vh;
 }
 
 .tortoise-text {
-  color: #93c572;
-  font-size: 25px;
-  margin: 2%;
+	color: #93c572;
+	font-size: 25px;
+	margin: 2%;
+	line-height: 1.2;
 }
 
 .button-container {
-  display: flex;
-  justify-content: space-around;
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
 }
 .button {
-  /*styles the user options*/
+	/*styles the user options*/
 }
 
 .input-text {
-  background-color: transparent;
-  color: #e59866;
-  width: 100%;
-  height: 100%;
-  border: transparent;
-  resize: none;
-  font-size: 25px;
-  font-family: "Press Start 2P", cursive;
+	background-color: transparent;
+	color: #e59866;
+	width: 100%;
+	height: 100%;
+	border: transparent;
+	resize: none;
+	font-size: 25px;
+	font-family: "Press Start 2P", cursive;
 }
 
 .input-text:focus {
-  outline: transparent;
-  font-size: 25px;
-  margin: 2%;
+	outline: transparent;
+	font-size: 25px;
+	margin: 2%;
 }
 
 button {
-  color: #e59866;
-  background-color: transparent;
-  transition: background-color 200ms ease-in-out;
-  border: transparent 2px solid;
+	color: #e59866;
+	background-color: transparent;
+	transition: background-color 200ms ease-in-out;
+	border: transparent 2px solid;
 
-  padding: 5px;
+	width: 30%;
+	padding: 5px;
+	margin-bottom: 20px;
 
-  font-family: "Press Start 2P", cursive;
-  font-size: 25px;
+	font-family: "Press Start 2P", cursive;
+	font-size: 25px;
 }
 
 button:hover {
-  border-bottom: #e59866 2px solid;
+	border-bottom: #e59866 2px solid;
 }
 
 .hidden {
-  display: none;
+	display: none;
 }
 
 .fade-out {
-  opacity: 0;
+	opacity: 0;
 }
 
 .fade-in {
-  opacity: 1;
+	opacity: 1;
 }

@@ -43,10 +43,10 @@ async function getCharacter(client, characterData) {
 									"The reasoning behind choosing the value for 'Dexterity'",
 								type: "string", 
 							},*/
-							Constitution: {
+							/*Constitution: {
 								description: "A measure of the characters health and stamina",
 								type: "number",
-							},
+							},*/
 							/* Con_thoughts: {
 								description:
 									"The reasoning behind choosing the value for 'Constitution'",

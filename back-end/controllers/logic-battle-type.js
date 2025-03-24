@@ -2,39 +2,46 @@
 
 const getCurrentUser = require("./logic-current-user");
 
-
 async function chooseBattleType() {
-  try {
-//NC- get the current user information
-    const { currentUser } = await getCurrentUser(); 
+	try {
+		//NC- get the current user information
+		const { currentUser } = await getCurrentUser();
 
-    if (!currentUser) {
-      return console.error("No current user found.");
-    }
+		if (!currentUser) {
+			return console.error("No current user found.");
+		}
 
-	console.log("Current UserId:", currentUser.userId);
-	console.log("Current Username", currentUser.name);
-  console.log("Weapon Selected:", currentUser.weapon);
+		console.log("Current UserId:", currentUser.userId);
+		console.log("Current Username", currentUser.name);
+		console.log("Weapon Selected:", currentUser.weapon);
 
-    let battleType;
-    switch (currentUser.weapon) { 
-      case "KittyLitterLauncher":
-        battleType = "Charisma";
-        break;
-      case "DogTreatCatapult":
-        battleType = "Wisdom";
-        break;
-      case "noisymegaphone":
-        battleType = "Empathy";
-        break;
-    }
+		let battleType;
+		switch (currentUser.weapon) {
+			case "coffeeMug":
+				battleType = "Charisma";
+				break;
+			case "plantPot":
+				battleType = "Wisdom";
+				break;
+			case "tvRemote":
+				battleType = "Empathy";
+				break;
+			case "lampShade":
+				battleType = "Strength";
+				break;
+			case "looseChange":
+				battleType = "Dexterity";
+				break;
+			case "phoneCharger":
+				battleType = "Intelligence";
+				break;
+		}
 
-    console.log("Chosen battle type:", battleType);
-	return battleType;
-    
-  } catch (error) {
-    console.error("Error in chooseBattleType:", error);
-  }
+		console.log("Chosen battle type:", battleType);
+		return battleType;
+	} catch (error) {
+		console.error("Error in chooseBattleType:", error);
+	}
 }
 
 module.exports = chooseBattleType;
